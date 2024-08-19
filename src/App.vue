@@ -1,5 +1,6 @@
 <script setup>
 import { useTheme } from "vuetify";
+import { RouterView } from 'vue-router';
 
 const theme = useTheme();
 
@@ -13,6 +14,7 @@ function toggleTheme() {
     <h1>MOVIES</h1>
     <v-btn @click="toggleTheme">Изменить тему</v-btn>
   </v-container>
+  <RouterView />
 </template>
 
 <style scoped>
