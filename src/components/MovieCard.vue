@@ -6,6 +6,7 @@
       <p>Год выпуска: {{movieData.year}}</p>
       <p>{{movieData.description}}</p>
       <p>Длительность фильма: {{movieData.movieLength}} минут</p>
+      <p>Рейтинг: {{movieData.rating.kp}}</p>
     </v-container>
   </v-card>
 </template>
