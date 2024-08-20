@@ -1,5 +1,13 @@
 <template>
-    <h2>карточка фильма {{ movie.name }}</h2>
+  <v-card width="800">
+    <v-img :src="movieData.poster.url" width="200" />
+    <v-container>
+      <h3>{{movieData.name}}</h3>
+      <p>Год выпуска: {{movieData.year}}</p>
+      <p>{{movieData.description}}</p>
+      <p>Длительность фильма: {{movieData.movieLength}} минут</p>
+    </v-container>
+  </v-card>
 </template>
 
 <script setup>
@@ -9,14 +17,6 @@ import { useMoviesStore } from "../store/movies";
 
 const moviesStore = useMoviesStore();
 const route = useRoute();
-const movie = moviesStore.movies.find((value) => value.name === route.params.name);
+const movieData = moviesStore.movies.find((value) => value.name === route.params.name);
 
-console.log(movie);
-
-watch(
-  () => route.params.id,
-  (newId, oldId) => {
-    console.log(newId)
-  }
-)
 </script>
