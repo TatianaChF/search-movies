@@ -9,6 +9,8 @@ import * as directives from 'vuetify/directives'
 
 import { createRouter, createWebHistory } from 'vue-router'
 import MainPage from './components/MainPage.vue'
+import MovieCard from './components/MovieCard.vue'
+import { createPinia } from 'pinia'
 
 const vuetify = createVuetify({
     components,
@@ -17,6 +19,7 @@ const vuetify = createVuetify({
 
 const routes = [
     { name: 'Home', path: '/', component: MainPage },
+    { name: 'Movie', path: '/:name', component: MovieCard }
 ]
 
 const router = createRouter({
@@ -24,4 +27,6 @@ const router = createRouter({
     routes,
 })
 
-createApp(App).use(router).use(vuetify).mount('#app')
+const pinia = createPinia()
+
+createApp(App).use(router).use(vuetify).use(pinia).mount('#app')
