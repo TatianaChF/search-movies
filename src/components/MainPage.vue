@@ -3,7 +3,7 @@
         <v-container class="container__card" v-for="movie in moviesStore.movies" :key="movie">
             <router-link :to="movie.name">
                 <v-card width="250">
-                    <v-img :src="movie.poster.url" 
+                    <v-img :src="movie.poster.previewUrl" 
                             width="250" />
                     <v-card>
                         <h3 class="text">{{movie.name}}</h3>
