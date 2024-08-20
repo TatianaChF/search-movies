@@ -3,11 +3,11 @@
     <v-card class="container-movie__card" width="865">
       <v-img :src="movieData.poster.url" width="200" />
       <v-container class="container-movie__text">
-        <h3>{{movieData.name}}</h3>
+        <h2>{{movieData.name}}</h2>
         <p>Год выпуска: {{movieData.year}}</p>
-        <p>{{movieData.description}}</p>
         <p>Длительность фильма: {{movieData.movieLength}} минут</p>
         <p>Рейтинг: {{movieData.rating.kp}}</p>
+        <p>{{movieData.description}}</p>
       </v-container>
     </v-card>
   </v-container>
