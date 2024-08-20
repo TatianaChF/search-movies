@@ -9,6 +9,7 @@ import * as directives from 'vuetify/directives'
 
 import { createRouter, createWebHistory } from 'vue-router'
 import MainPage from './components/MainPage.vue'
+import MovieCard from './components/MovieCard.vue'
 
 const vuetify = createVuetify({
     components,
@@ -17,6 +18,7 @@ const vuetify = createVuetify({
 
 const routes = [
     { name: 'Home', path: '/', component: MainPage },
+    { name: 'Movie', path: '/:name', component: MovieCard }
 ]
 
 const router = createRouter({
