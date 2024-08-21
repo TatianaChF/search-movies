@@ -41,6 +41,8 @@ let currentSortValue = ref({
 
 <style lang="scss" scoped>
 .container-list {
+    position: absolute;
     margin-left: 120px;
+    z-index: 2;
 }
 </style>
