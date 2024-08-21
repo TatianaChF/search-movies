@@ -1,7 +1,7 @@
 <template>
   <v-container class="container-movie">
-    <v-card class="container-movie__card" width="865">
-      <v-img :src="movieData.poster.url" width="200" />
+    <v-card class="container-movie__card" width="1100">
+      <v-img :src="movieData.poster.url" width="400" />
       <v-container class="container-movie__text">
         <h2>{{movieData.name}}</h2>
         <p>Год выпуска: {{movieData.year}}</p>
@@ -26,10 +26,10 @@ const movieData = moviesStore.movies.find((value) => value.name === route.params
 
 <style lang="scss" scoped>
 .container-movie {
-  text-align: center;
 
   &__card {
     display: flex;
+    margin: auto;
   }
 
   &__text {
