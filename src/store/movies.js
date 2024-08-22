@@ -31,6 +31,10 @@ export const useMoviesStore = defineStore('moviesData', () => {
     }
 
     const searchMovie = (movieName) => {
+        if (movieName === "") {
+            movies.value = moviesData.docs;
+        }
+
         movies.value = movies.value.filter((movie) => {
             return movie.name.toLowerCase().includes(movieName);
         })
