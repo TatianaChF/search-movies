@@ -1,10 +1,10 @@
 <template>
   <v-container>
-    <b>Сортировать по: <span @click="isOpen = !isOpen">{{ currentSortValue.title }}</span> </b>
+    <b>Сортировать по: <span @click="isOpen = !isOpen" class="current-value">{{ currentSortValue.title }}</span> </b>
     <v-container class="container-list" v-if="isOpen">
       <v-list width="300">
         <v-list-item v-for="sort in sortingValue" :key="sort">
-          <p @click="chooseSort(sort)">{{ sort.title }}</p>
+          <p @click="chooseSort(sort)" class="container-list__item">{{ sort.title }}</p>
         </v-list-item>
       </v-list>
     </v-container>
@@ -48,9 +48,18 @@ const chooseSort = (sortValue) => {
 </script>
 
 <style lang="scss" scoped>
+.current-value {
+    text-decoration-line: underline;
+    cursor: pointer;
+}
+
 .container-list {
     position: absolute;
     margin-left: 120px;
     z-index: 2;
+
+    &__item {
+        cursor: pointer;
+    }
 }
 </style>
