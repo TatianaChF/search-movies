@@ -4,7 +4,7 @@
     <v-container class="container-list" v-if="isOpen">
       <v-list width="300">
         <v-list-item v-for="sort in sortingValue" :key="sort">
-          {{ sort.title }}
+          <p @click="chooseSort(sort)">{{ sort.title }}</p>
         </v-list-item>
       </v-list>
     </v-container>
@@ -37,6 +37,11 @@ let currentSortValue = ref({
   sort: "year",
   title: "по году выпуска (по возрастанию)",
 });
+
+const chooseSort = (sortValue) => {
+    currentSortValue.value = sortValue;
+    isOpen.value = false;
+}
 </script>
 
 <style lang="scss" scoped>
