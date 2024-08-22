@@ -13,6 +13,7 @@
 
 <script setup>
 import { ref } from "vue";
+import { useMoviesStore } from "../store/movies";
 
 const sortingValue = [
   { name: "yearASC", sort: "year", title: "по году выпуска (по возрастанию)" },
@@ -37,10 +38,12 @@ let currentSortValue = ref({
   sort: "year",
   title: "по году выпуска (по возрастанию)",
 });
+const moviesStore = useMoviesStore();
 
 const chooseSort = (sortValue) => {
     currentSortValue.value = sortValue;
     isOpen.value = false;
+    moviesStore.sortedMovies(sortValue.name);
 }
 </script>
 
