@@ -30,5 +30,11 @@ export const useMoviesStore = defineStore('moviesData', () => {
         }
     }
 
-    return {movies, sortedMovies}
+    const searchMovie = (movieName) => {
+        movies.value = movies.value.filter((movie) => {
+            return movie.name.toLowerCase().includes(movieName);
+        })
+    }
+
+    return {movies, sortedMovies, searchMovie}
 })

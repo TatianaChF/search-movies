@@ -11,10 +11,12 @@
 
 <script setup>
 import { ref, watch } from "vue";
+import { useMoviesStore } from "../store/movies";
 
-const searchValue = ref("");
+let searchValue = ref("");
+const moviesStore = useMoviesStore()
 
 watch(searchValue, () => {
-    console.log(searchValue.value)
+    moviesStore.searchMovie(searchValue.value)
 })
 </script>
