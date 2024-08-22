@@ -34,9 +34,9 @@ const sortingValue = [
 
 let isOpen = ref(false);
 let currentSortValue = ref({
-  name: "yearASC",
-  sort: "year",
-  title: "по году выпуска (по возрастанию)",
+  name: "noSort",
+  sort: "no",
+  title: "нет сортировки",
 });
 const moviesStore = useMoviesStore();
 
