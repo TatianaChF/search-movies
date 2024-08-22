@@ -1,6 +1,7 @@
 <script setup>
 import { useTheme } from "vuetify";
 import { RouterView } from 'vue-router';
+import SearchMovie from "./components/SearchMovie.vue";
 
 const theme = useTheme();
 
@@ -12,6 +13,7 @@ function toggleTheme() {
 <template>
   <v-container class="header">
     <h1>MOVIES</h1>
+    <search-movie />
     <v-btn @click="toggleTheme">Изменить тему</v-btn>
   </v-container>
   <RouterView />
