@@ -32,7 +32,7 @@ const moviesStore = useMoviesStore();
 const route = useRoute();
 const movieData = moviesStore.movies.find((value) => value.name === route.params.name);
 const ratingStore = useRatingStore();
-const rating = ref(1);
+const rating = ref(0);
 const ratingData = ref({
   nameMovie: movieData.name,
   ratingValue: rating.value
