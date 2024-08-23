@@ -8,7 +8,7 @@
         <p>Год выпуска: {{movieData.year}}</p>
         <p>Длительность фильма: {{movieData.movieLength}} минут</p>
         <p>Рейтинг: {{movieData.rating.kp}}</p>
-        <p>{{movieData.description}}</p>
+        <p>Описание: {{movieData.description}}</p>
       </v-container>
     </v-card>
   </v-container>
