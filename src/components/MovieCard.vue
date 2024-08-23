@@ -32,7 +32,9 @@ const route = useRoute();
 const movieData = moviesStore.movies.find((value) => value.name === route.params.name);
 let rating = ref(1);
 
-console.log(rating)
+watch(rating, () => {
+  console.log(rating)
+})
 
 </script>
 
