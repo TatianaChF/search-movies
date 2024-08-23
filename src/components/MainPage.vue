@@ -6,15 +6,7 @@
       v-for="movie in moviesStore.movies"
       :key="movie"
     >
-      <router-link :to="movie.name" class="container__card__router">
-        <v-card width="250">
-          <v-img :src="movie.poster.previewUrl" width="250" />
-          <v-card class="text">
-            <h3>{{ movie.name }}</h3>
-            <p>{{ movie.year }}, {{ movie.rating.kp }}</p>
-          </v-card>
-        </v-card>
-      </router-link>
+      <movie-card :movieData="movie" />
     </v-container>
   </v-container>
 </template>
@@ -22,8 +14,13 @@
 <script setup>
 import { useMoviesStore } from "../store/movies";
 import SortingComponent from "./SortingComponent.vue";
+import MovieCard from "./MovieCard.vue";
 
 const moviesStore = useMoviesStore();
+
+defineProps({
+    movieData: Object
+})
 </script>
 
 <style lang="scss" scoped>
