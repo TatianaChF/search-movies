@@ -15,7 +15,7 @@
           :size="23"
           :model-value="3"
           active-color="#FFD700"
-          v-model="rating"
+          v-model="ratingStore.rating.ratingValue"
         />
       </v-container>
     </v-card>
@@ -23,18 +23,14 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useMoviesStore } from "../store/movies";
+import { useRatingStore } from "../store/rating";
 
 const moviesStore = useMoviesStore();
 const route = useRoute();
 const movieData = moviesStore.movies.find((value) => value.name === route.params.name);
-let rating = ref(1);
-
-watch(rating, () => {
-  console.log(rating)
-})
+const ratingStore = useRatingStore();
 
 </script>
 
