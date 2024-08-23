@@ -6,7 +6,7 @@ export const useRatingStore = defineStore("ratingData", () => {
     const ratingLocalStorage = localStorage.getItem("ratingData");
 
     if (ratingLocalStorage) {
-        rating.value.ratingValue = JSON.parse(ratingLocalStorage)._value.ratingValue;
+        rating.value = JSON.parse(ratingLocalStorage)._value;
     }
 
     const getMovieName = (name, ratingValue) => {
@@ -18,8 +18,6 @@ export const useRatingStore = defineStore("ratingData", () => {
 
     const updateRating = (ratingObj) => {
         rating.value.push(ratingObj);
-        console.log(rating.value);
-        console.log(ratingObj)
     }
 
     watch(() => rating, (state) => {
