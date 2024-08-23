@@ -3,7 +3,8 @@
     <v-card class="container-movie__card" width="1100">
       <v-img :src="movieData.poster.url" width="400" />
       <v-container class="container-movie__text">
-        <h2>{{movieData.name}}</h2>
+        <h1>{{movieData.name}}</h1>
+        <p v-if="movieData.alternativeName">Оригинальное название: {{ movieData.alternativeName }}</p>
         <p>Год выпуска: {{movieData.year}}</p>
         <p>Длительность фильма: {{movieData.movieLength}} минут</p>
         <p>Рейтинг: {{movieData.rating.kp}}</p>
