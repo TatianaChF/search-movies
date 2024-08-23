@@ -9,8 +9,9 @@
       <router-link :to="movie.name" class="container__card__router">
         <v-card width="250">
           <v-img :src="movie.poster.previewUrl" width="250" />
-          <v-card>
-            <h3 class="text">{{ movie.name }}</h3>
+          <v-card class="text">
+            <h3>{{ movie.name }}</h3>
+            <p>{{ movie.year }}, {{ movie.rating.kp }}</p>
           </v-card>
         </v-card>
       </router-link>
