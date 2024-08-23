@@ -9,6 +9,13 @@
         <p>Длительность фильма: {{movieData.movieLength}} минут</p>
         <p>Рейтинг: {{movieData.rating.kp}}</p>
         <p>Описание: {{movieData.description}}</p>
+        <v-rating
+          hover
+          :length="10"
+          :size="23"
+          :model-value="3"
+          active-color="#FFD700"
+        />
       </v-container>
     </v-card>
   </v-container>
