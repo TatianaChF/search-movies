@@ -2,19 +2,30 @@ import { defineStore } from "pinia";
 import { ref, watch } from "vue";
 
 export const useRatingStore = defineStore("ratingData", () => {
-    const rating = ref({
-        ratingValue: 1
-    });
+    const rating = ref([]);
     const ratingLocalStorage = localStorage.getItem("ratingData");
 
-    if(ratingLocalStorage) {
+    if (ratingLocalStorage) {
         rating.value.ratingValue = JSON.parse(ratingLocalStorage)._value.ratingValue;
     }
 
+    const getMovieName = (name, ratingValue) => {
+        rating.value.push({
+            movieName: name,
+            ratingValue: ratingValue
+        })
+    }
+
+    const updateRating = (ratingObj) => {
+        rating.value.push(ratingObj);
+        console.log(rating.value);
+        console.log(ratingObj)
+    }
+
     watch(() => rating, (state) => {
-        console.log(rating.value)
         localStorage.setItem("ratingData", JSON.stringify(state))
     }, { deep: true })
 
-    return {rating}
+
+    return {rating, getMovieName, updateRating}
 })
