@@ -9,21 +9,20 @@ export const useRatingStore = defineStore("ratingData", () => {
         rating.value = JSON.parse(ratingLocalStorage)._value;
     }
 
-    const getMovieName = (name, ratingValue) => {
-        rating.value.push({
-            movieName: name,
-            ratingValue: ratingValue
-        })
-    }
-
     const updateRating = (ratingObj) => {
-        rating.value.push(ratingObj);
+        const assessMovie = rating.value.findIndex(({nameMovie: movie}) => movie === ratingObj.nameMovie);
+        if (assessMovie > -1) {
+            rating.value.splice(assessMovie, 1);
+            rating.value.push(ratingObj);
+        } else {
+            rating.value.push(ratingObj);
+        }
     }
 
-    watch(() => rating, (state) => {
+    watch(() => rating, (state) => {    
         localStorage.setItem("ratingData", JSON.stringify(state))
     }, { deep: true })
 
 
-    return {rating, getMovieName, updateRating}
+    return {rating, updateRating}
 })
