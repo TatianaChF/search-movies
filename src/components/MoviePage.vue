@@ -5,7 +5,10 @@
       <v-container class="container-movie__text">
         <v-conatiner class="container-movie__name">
           <h1>{{ movieData.name }}</h1>
-          <v-btn icon="mdi-file" @click="bookmarksStore.addMovieToBookmarks(movieData)" />
+          <v-btn icon="mdi-file" @click="
+            bookmarksStore.addMovieToBookmarks(movieData);
+            isClick = !isClick" 
+            :color="changeStyleBtn" />
         </v-conatiner>
         <p v-if="movieData.alternativeName">
           Оригинальное название: {{ movieData.alternativeName }}
@@ -28,7 +31,7 @@
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
+import { ref, watch, computed } from "vue";
 import { useRoute } from "vue-router";
 import { useMoviesStore } from "../store/movies";
 import { useRatingStore } from "../store/rating";
@@ -46,6 +49,7 @@ const ratingData = ref({
   nameMovie: movieData.name,
   ratingValue: rating.value,
 });
+const isClick = ref(false);
 
 // цикл для определения оценки фильма (оценивался ли фильм пользователем)
 for (let i = 0; i < ratingStore.rating.length; i++) {
@@ -59,6 +63,10 @@ watch(rating, () => {
   ratingData.value.ratingValue = rating.value;
   ratingStore.updateRating(ratingData.value);
 });
+
+const changeStyleBtn = computed(() => {
+  return isClick.value ? "yellow" : "";
+})
 </script>
 
 <style lang="scss" scoped>
