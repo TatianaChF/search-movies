@@ -5,7 +5,7 @@
       <v-container class="container-movie__text">
         <v-conatiner class="container-movie__name">
           <h1>{{ movieData.name }}</h1>
-          <v-btn icon="mdi-file" />
+          <v-btn icon="mdi-file" @click="bookmarksStore.addMovieToBookmarks(movieData)" />
         </v-conatiner>
         <p v-if="movieData.alternativeName">
           Оригинальное название: {{ movieData.alternativeName }}
@@ -32,6 +32,7 @@ import { ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import { useMoviesStore } from "../store/movies";
 import { useRatingStore } from "../store/rating";
+import { useBookmarksStore } from "../store/bookmarks";
 
 const moviesStore = useMoviesStore();
 const route = useRoute();
@@ -39,6 +40,7 @@ const movieData = moviesStore.movies.find(
   (value) => value.name === route.params.name
 );
 const ratingStore = useRatingStore();
+const bookmarksStore = useBookmarksStore();
 const rating = ref(0);
 const ratingData = ref({
   nameMovie: movieData.name,
