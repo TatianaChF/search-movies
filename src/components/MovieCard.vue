@@ -4,7 +4,10 @@
           <v-img :src="props.movieData.poster.previewUrl" width="250" />
           <v-card class="text">
             <h3>{{ props.movieData.name }}</h3>
-            <p>{{ props.movieData.year }}, {{ props.movieData.rating.kp }}</p>
+            <p class="title">{{ props.movieData.year }}г, 
+              <v-icon icon="mdi-star" color="#FFD700" size="20"></v-icon>
+              {{ props.movieData.rating.kp }}
+            </p>
           </v-card>
         </v-card>
     </router-link>
@@ -30,5 +33,12 @@ const props = defineProps(["movieData"]);
 
 .text {
   text-align: center;
+}
+
+.title {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  gap: 2px;
 }
 </style>
