@@ -9,6 +9,7 @@ export const useRatingStore = defineStore("ratingData", () => {
         rating.value = JSON.parse(ratingLocalStorage)._value;
     }
 
+    // функция, проверяющая наличие фильма в массиве рейтингов и добавляющая фильм
     const updateRating = (ratingObj) => {
         const assessMovie = rating.value.findIndex(({nameMovie: movie}) => movie === ratingObj.nameMovie);
         if (assessMovie > -1) {
