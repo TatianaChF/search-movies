@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref, watch } from 'vue';
+import { ref, watch } from 'vue';
 import { useRoute } from 'vue-router'
 import { useMoviesStore } from "../store/movies";
 import { useRatingStore } from "../store/rating";
