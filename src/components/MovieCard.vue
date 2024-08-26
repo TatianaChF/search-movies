@@ -1,39 +1,44 @@
 <template>
-  <v-container class="container-movie">
-    <v-card class="container-movie__card" width="1100">
-      <v-img :src="movieData.poster.url" width="400" />
-      <v-container class="container-movie__text">
-        <h2>{{movieData.name}}</h2>
-        <p>Год выпуска: {{movieData.year}}</p>
-        <p>Длительность фильма: {{movieData.movieLength}} минут</p>
-        <p>Рейтинг: {{movieData.rating.kp}}</p>
-        <p>{{movieData.description}}</p>
-      </v-container>
-    </v-card>
-  </v-container>
+    <router-link :to="props.movieData.name" class="container__card__router">
+        <v-card width="250">
+          <v-img :src="props.movieData.poster.previewUrl" width="250" />
+          <v-card class="text">
+            <h3>{{ props.movieData.name }}</h3>
+            <p class="title">{{ props.movieData.year }}г, 
+              <v-icon icon="mdi-star" color="#FFD700" size="20"></v-icon>
+              {{ props.movieData.rating.kp }}
+            </p>
+          </v-card>
+        </v-card>
+    </router-link>
 </template>
 
 <script setup>
-import { watch } from 'vue'
-import { useRoute } from 'vue-router'
-import { useMoviesStore } from "../store/movies";
-
-const moviesStore = useMoviesStore();
-const route = useRoute();
-const movieData = moviesStore.movies.find((value) => value.name === route.params.name);
-
+const props = defineProps(["movieData"]);
 </script>
 
 <style lang="scss" scoped>
-.container-movie {
+.container {
+  display: flex;
+  flex-wrap: wrap;
 
   &__card {
-    display: flex;
-    margin: auto;
-  }
+    flex: 250px;
 
-  &__text {
-    text-align: left;
+    &__router {
+      text-decoration: none;
+    }
   }
+}
+
+.text {
+  text-align: center;
+}
+
+.title {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  gap: 2px;
 }
 </style>
