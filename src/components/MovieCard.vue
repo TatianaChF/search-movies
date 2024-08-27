@@ -1,6 +1,8 @@
 <template>
     <router-link :to="props.movieData.name" class="container__card__router">
-        <v-card width="250">
+        <v-card width="250" 
+        @mouseenter="isMouseEnter = true" 
+        @mouseleave="isMouseEnter = false">
           <v-img :src="props.movieData.poster.previewUrl" width="250" />
           <v-card class="text">
             <h3>{{ props.movieData.name }}</h3>
@@ -8,12 +10,16 @@
               <v-icon icon="mdi-star" color="#FFD700" size="20"></v-icon>
               {{ props.movieData.rating.kp }}
             </p>
+            <p v-if="isMouseEnter">Mouse!</p>
           </v-card>
         </v-card>
     </router-link>
 </template>
 
 <script setup>
+import { ref } from "vue";
+
+const isMouseEnter = ref(false);
 const props = defineProps(["movieData"]);
 </script>
 
