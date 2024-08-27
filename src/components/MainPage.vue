@@ -11,7 +11,7 @@
   </v-container>
   <v-pagination
       v-model="page"
-      :length="4"
+      :length="lengthPagination"
       rounded="circle"
   ></v-pagination>
 </template>
@@ -20,8 +20,10 @@
 import { useMoviesStore } from "../store/movies";
 import SortingComponent from "./SortingComponent.vue";
 import MovieCard from "./MovieCard.vue";
+import { ref } from "vue";
 
 const moviesStore = useMoviesStore();
+const lengthPagination = ref(Math.round(moviesStore.movies.length / 25));
 
 defineProps({
     movieData: Object
