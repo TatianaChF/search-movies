@@ -49,7 +49,7 @@ const ratingData = ref({
   nameMovie: movieData.name,
   ratingValue: rating.value,
 });
-const isAddBookmarks = ref(false);
+const isAddBookmarks = ref(bookmarksStore.bookmarks.includes(movieData));
 
 // цикл для определения оценки фильма (оценивался ли фильм пользователем)
 for (let i = 0; i < ratingStore.rating.length; i++) {
@@ -67,6 +67,9 @@ watch(rating, () => {
 const changeStyleBtn = computed(() => {
   return isAddBookmarks.value ? "yellow" : "";
 })
+
+console.log(bookmarksStore.bookmarks)
+console.log(bookmarksStore.bookmarks.includes(movieData))
 </script>
 
 <style lang="scss" scoped>
