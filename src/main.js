@@ -10,6 +10,7 @@ import * as directives from 'vuetify/directives'
 import { createRouter, createWebHistory } from 'vue-router'
 import MainPage from './components/MainPage.vue'
 import MoviePage from './components/MoviePage.vue'
+import BookmarksPage from './components/BookmarksPage.vue'
 import { createPinia } from 'pinia'
 
 const vuetify = createVuetify({
@@ -19,7 +20,8 @@ const vuetify = createVuetify({
 
 const routes = [
     { name: 'Home', path: '/', component: MainPage },
-    { name: 'Movie', path: '/:name', component: MoviePage }
+    { name: 'Movie', path: '/:name', component: MoviePage },
+    { name: 'Bookmarks', path: '/bookmarks', component: BookmarksPage }
 ]
 
 const router = createRouter({
