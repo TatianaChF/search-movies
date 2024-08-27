@@ -7,7 +7,7 @@
           <movie-card :movieData="movie" />
         </v-container>
     </v-container>
-    <p v-else>У Вас нет фильмов в закладках</p>
+    <h2 class="text" v-else>У Вас нет фильмов в закладках</h2>
 </template>
 
 <script setup>
