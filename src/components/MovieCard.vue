@@ -10,9 +10,9 @@
               <v-icon icon="mdi-star" color="#FFD700" size="20"></v-icon>
               {{ props.movieData.rating.kp }}
             </p>
-            <v-container v-if="isMouseEnter">
+            <v-container v-if="isMouseEnter" class="text__extended">
               <p>{{ props.movieData.shortDescription }}</p>
-              <p>{{ textBookmarks }}</p>
+              <p><b>{{ textBookmarks }}</b></p>
             </v-container>
           </v-card>
         </v-card>
@@ -24,14 +24,14 @@ import { ref } from "vue";
 import { useBookmarksStore } from "../store/bookmarks";
 
 const isMouseEnter = ref(false);
-const textBookmarks = ref("фильма нет в закладках")
+const textBookmarks = ref("нет в закладках")
 const bookmarksStore = useBookmarksStore();
 const props = defineProps(["movieData"]);
 
 for (let i = 0; i < bookmarksStore.bookmarks.length; i++) {
   let currentMovie = bookmarksStore.bookmarks[i];
   if (props.movieData.name === currentMovie.name) {
-    textBookmarks.value = "фильм в закладках";
+    textBookmarks.value = "в закладках";
   }
 }
 </script>
@@ -52,6 +52,10 @@ for (let i = 0; i < bookmarksStore.bookmarks.length; i++) {
 
 .text {
   text-align: center;
+
+  &__extended {
+    text-align: left;
+  }
 }
 
 .title {
