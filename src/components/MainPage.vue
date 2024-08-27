@@ -9,6 +9,11 @@
       <movie-card :movieData="movie" />
     </v-container>
   </v-container>
+  <v-pagination
+      v-model="page"
+      :length="4"
+      rounded="circle"
+  ></v-pagination>
 </template>
 
 <script setup>
