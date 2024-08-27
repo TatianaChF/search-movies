@@ -49,13 +49,21 @@ const ratingData = ref({
   nameMovie: movieData.name,
   ratingValue: rating.value,
 });
-const isAddBookmarks = ref(bookmarksStore.bookmarks.includes(movieData));
+const isAddBookmarks = ref(false);
 
 // цикл для определения оценки фильма (оценивался ли фильм пользователем)
 for (let i = 0; i < ratingStore.rating.length; i++) {
   let currentMovie = ratingStore.rating[i];
   if (movieData.name === currentMovie.nameMovie) {
     rating.value = currentMovie.ratingValue;
+  }
+}
+
+// цикл для определения, добавлен ли фильм в закладки
+for (let i = 0; i < bookmarksStore.bookmarks.length; i++) {
+  let currentMovie = bookmarksStore.bookmarks[i];
+  if (movieData.name === currentMovie.name) {
+    isAddBookmarks.value = true;
   }
 }
 
@@ -67,9 +75,6 @@ watch(rating, () => {
 const changeStyleBtn = computed(() => {
   return isAddBookmarks.value ? "yellow" : "";
 })
-
-console.log(bookmarksStore.bookmarks)
-console.log(bookmarksStore.bookmarks.includes(movieData))
 </script>
 
 <style lang="scss" scoped>
