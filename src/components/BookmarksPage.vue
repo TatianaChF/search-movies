@@ -1,5 +1,5 @@
 <template>
-    <v-container class="container">
+    <v-container class="container" v-if="bookmarksStore.bookmarks.length > 0">
         <v-container 
         class="container__card"
         v-for="movie in bookmarksStore.bookmarks" 
@@ -7,6 +7,7 @@
           <movie-card :movieData="movie" />
         </v-container>
     </v-container>
+    <p v-else>У Вас нет фильмов в закладках</p>
 </template>
 
 <script setup>
