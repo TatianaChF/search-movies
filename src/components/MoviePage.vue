@@ -7,7 +7,7 @@
           <h1>{{ movieData.name }}</h1>
           <v-btn icon="mdi-file" @click="
             bookmarksStore.addMovieToBookmarks(movieData);
-            isClick = !isClick" 
+            isAddBookmarks = !isAddBookmarks" 
             :color="changeStyleBtn" />
         </v-conatiner>
         <p v-if="movieData.alternativeName">
@@ -49,7 +49,7 @@ const ratingData = ref({
   nameMovie: movieData.name,
   ratingValue: rating.value,
 });
-const isClick = ref(false);
+const isAddBookmarks = ref(false);
 
 // цикл для определения оценки фильма (оценивался ли фильм пользователем)
 for (let i = 0; i < ratingStore.rating.length; i++) {
@@ -65,7 +65,7 @@ watch(rating, () => {
 });
 
 const changeStyleBtn = computed(() => {
-  return isClick.value ? "yellow" : "";
+  return isAddBookmarks.value ? "yellow" : "";
 })
 </script>
 
