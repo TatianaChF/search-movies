@@ -1,4 +1,5 @@
 <template>
+    <sorting-component />
     <v-container class="container" v-if="bookmarksStore.bookmarks.length > 0">
         <v-container 
         class="container__card"
@@ -13,6 +14,7 @@
 <script setup>
 import { useBookmarksStore } from "../store/bookmarks";
 import MovieCard from "./MovieCard.vue";
+import SortingComponent from "./SortingComponent.vue";
 
 const bookmarksStore = useBookmarksStore();
 
