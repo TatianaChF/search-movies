@@ -5,10 +5,9 @@
       <v-container class="container-movie__text">
         <v-conatiner class="container-movie__name">
           <h1>{{ movieData.name }}</h1>
-          <v-btn icon="mdi-file" @click="
+          <v-btn :icon="changeStyleBtn" @click="
             bookmarksStore.addMovieToBookmarks(movieData);
-            isAddBookmarks = !isAddBookmarks" 
-            :color="changeStyleBtn" />
+            isAddBookmarks = !isAddBookmarks" />
         </v-conatiner>
         <p v-if="movieData.alternativeName">
           Оригинальное название: {{ movieData.alternativeName }}
@@ -73,7 +72,7 @@ watch(rating, () => {
 });
 
 const changeStyleBtn = computed(() => {
-  return isAddBookmarks.value ? "yellow" : "";
+  return isAddBookmarks.value ? "mdi-check" : "mdi-file";
 })
 </script>
 
