@@ -18,6 +18,10 @@ export const useBookmarksStore = defineStore('bookmarksData', () => {
         }
     }
 
+    const clearBookmarks = () => {
+        return bookmarks.value.length = 0;
+    }
+
     const sortedBookmarks = (sortName) => {
         switch(sortName) {
             case "yearASC":
@@ -47,5 +51,5 @@ export const useBookmarksStore = defineStore('bookmarksData', () => {
         localStorage.setItem("bookmarksData", JSON.stringify(state))
     }, { deep: true })
 
-    return {bookmarks, addMovieToBookmarks, sortedBookmarks}
+    return {bookmarks, addMovieToBookmarks, sortedBookmarks, clearBookmarks}
 })

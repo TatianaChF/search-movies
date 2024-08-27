@@ -1,5 +1,8 @@
 <template>
-    <sorting-component />
+    <v-container class="container__sort" width="880">
+        <sorting-component />
+        <v-btn icon="mdi-delete" @click="bookmarksStore.clearBookmarks()"></v-btn>
+    </v-container>
     <v-container class="container" v-if="bookmarksStore.bookmarks.length > 0">
         <v-container 
         class="container__card"
@@ -34,6 +37,11 @@ defineProps({
     &__router {
       text-decoration: none;
     }
+  }
+
+  &__sort {
+    display: flex;
+    margin-right: 170px;
   }
 }
 
