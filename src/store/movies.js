@@ -4,6 +4,9 @@ import moviesData from "./../api/kinopoisk-1.json";
 
 export const useMoviesStore = defineStore('moviesData', () => {
     const movies = ref(moviesData.docs);
+    const currentPage = ref(1);
+    const pageSize = ref(25);
+    const lengthPagination = ref(Math.round(movies.value.length / pageSize));
 
     const sortedMovies = (sortName) => {
         switch(sortName) {
@@ -38,5 +41,5 @@ export const useMoviesStore = defineStore('moviesData', () => {
         })
     }
 
-    return {movies, sortedMovies, searchMovie}
+    return {movies, sortedMovies, searchMovie, currentPage, lengthPagination, pageSize}
 })

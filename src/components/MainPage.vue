@@ -10,8 +10,8 @@
     </v-container>
   </v-container>
   <v-pagination
-      v-model="currentPage"
-      :length="lengthPagination"
+      v-model="moviesStore.currentPage"
+      :length="moviesStore.lengthPagination"
       rounded="circle"
   ></v-pagination>
 </template>
@@ -23,9 +23,6 @@ import MovieCard from "./MovieCard.vue";
 import { ref } from "vue";
 
 const moviesStore = useMoviesStore();
-const lengthPagination = ref(Math.round(moviesStore.movies.length / 25));
-const currentPage = ref(1);
-const pageSize = ref(25);
 
 defineProps({
     movieData: Object
