@@ -3,7 +3,7 @@
   <v-container class="container">
     <v-container
       class="container__card"
-      v-for="movie in moviesStore.movies"
+      v-for="movie in moviesStore.displayedMovies"
       :key="movie"
     >
       <movie-card :movieData="movie" />
