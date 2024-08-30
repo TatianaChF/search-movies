@@ -10,7 +10,7 @@ export const useMoviesStore = defineStore('moviesData', () => {
     const lengthPagination = ref(0);
 
     const getMovieData = async () => {
-        const response = await axios.get(`http://localhost:3000/docs?page=${currentPage.value}&limit=${pageSize.value}`);
+        const response = await axios.get(`http://localhost:3000/docs?_page=${currentPage.value}&_limit=${pageSize.value}`);
         movies.value = response?.data;
         lengthPagination.value = Math.round(movies.value.length / pageSize.value);
     }
