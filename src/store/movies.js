@@ -5,14 +5,15 @@ import moviesData from "./../api/kinopoisk-1.json";
 
 export const useMoviesStore = defineStore('moviesData', () => {
     const movies = ref([]);
+    const totalMovies = ref(100);
     const currentPage = ref(1);
     const pageSize = ref(25);
     const lengthPagination = ref(0);
 
     const getMovieData = async () => {
-        const response = await axios.get(`http://localhost:3000/docs?_page=${currentPage.value}&_limit=${pageSize.value}`);
+        const response = await axios.get(`http://localhost:3000/docs?_limit=${pageSize.value}`);
         movies.value = response?.data;
-        lengthPagination.value = Math.round(movies.value.length / pageSize.value);
+        lengthPagination.value = Math.round(totalMovies.value / pageSize.value);
     }
 
     const sortedMovies = (sortName) => {
