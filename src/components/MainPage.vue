@@ -13,6 +13,7 @@
       v-model="moviesStore.currentPage"
       :length="moviesStore.lengthPagination"
       rounded="circle"
+      @click="moviesStore.getMovieData()"
   ></v-pagination>
 </template>
 
@@ -31,6 +32,7 @@ defineProps({
 onBeforeMount(() => {
   moviesStore.getMovieData();
 }) 
+
 </script>
 
 <style lang="scss" scoped>
