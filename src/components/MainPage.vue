@@ -20,7 +20,7 @@
 import { useMoviesStore } from "../store/movies";
 import SortingComponent from "./SortingComponent.vue";
 import MovieCard from "./MovieCard.vue";
-import { ref } from "vue";
+import { ref, onBeforeMount } from "vue";
 
 const moviesStore = useMoviesStore();
 
@@ -28,6 +28,9 @@ defineProps({
     movieData: Object
 })
 
+onBeforeMount(() => {
+  moviesStore.getMovieData();
+}) 
 </script>
 
 <style lang="scss" scoped>
