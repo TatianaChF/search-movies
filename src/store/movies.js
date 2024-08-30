@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { computed, ref } from "vue";
+import { ref } from "vue";
 import axios from "axios";
 import moviesData from "./../api/kinopoisk-1.json";
 
@@ -17,7 +17,7 @@ export const useMoviesStore = defineStore('moviesData', () => {
         lengthPagination.value = Math.round(totalMovies.value / pageSize.value);
         startIndex.value = (currentPage.value - 1) * pageSize.value;
     }
-    
+
     const sortedMovies = (sortName) => {
         switch(sortName) {
             case "yearASC":
