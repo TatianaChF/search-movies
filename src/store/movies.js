@@ -12,9 +12,15 @@ export const useMoviesStore = defineStore('moviesData', () => {
     const currentSortValue = ref("нет сортировки");
     const sortLocalStorage = localStorage.getItem("sortData");
 
-    watch(currentSortValue, () => {
-        console.log(currentSortValue.value)
-    })
+    if (sortLocalStorage) {
+        currentSortValue.value = JSON.parse(sortLocalStorage)._value;
+    }
+
+    watch(() => currentSortValue, (state) => {
+        localStorage.setItem("sortData", JSON.stringify(state))
+        sortedMovies(currentSortValue.value)
+        console.log(movies.value)
+    }, { deep: true })
 
     const getMovieData = async () => {
         const response = await axios.get(`http://localhost:3000/docs`);
@@ -32,27 +38,27 @@ export const useMoviesStore = defineStore('moviesData', () => {
     const sortedMovies = (sortName) => {
         switch(sortName) {
             case "году выпуска (по возрастанию)":
-                movies.value.sort((a, b) => a.year - b.year);
+                movies.value = movies.value.sort((a, b) => a.year - b.year);
                 currentSortValue.value = "году выпуска (по возрастанию)";
                 break;
             case "году выпуска (по убыванию)":
-                movies.value.sort((a, b) => b.year - a.year);
+                movies.value = movies.value.sort((a, b) => b.year - a.year);
                 currentSortValue.value = "году выпуска (по убыванию)";
                 break;
             case "рейтингу (по возрастанию)":
-                movies.value.sort((a, b) => a.rating.kp - b.rating.kp);
+                movies.value = movies.value.sort((a, b) => a.rating.kp - b.rating.kp);
                 currentSortValue.value = "рейтингу (по возрастанию)";
                 break;
             case "рейтингу (по убыванию)":
-                movies.value.sort((a, b) => b.rating.kp - a.rating.kp);
+                movies.value = movies.value.sort((a, b) => b.rating.kp - a.rating.kp);
                 currentSortValue.value = "рейтингу (по убыванию)";
                 break;
             case "длительности (по возрастанию)":
-                movies.value.sort((a, b) => a.movieLength - b.movieLength);
+                movies.value = movies.value.sort((a, b) => a.movieLength - b.movieLength);
                 currentSortValue.value = "длительности (по возрастанию)";
                 break;
             case "длительности (по убыванию)":
-                movies.value.sort((a, b) => b.movieLength - a.movieLength);
+                movies.value = movies.value.sort((a, b) => b.movieLength - a.movieLength);
                 currentSortValue.value = "длительности (по убыванию)";
                 break;
             default:

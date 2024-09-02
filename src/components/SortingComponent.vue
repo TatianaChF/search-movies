@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <b>Сортировать по: <span @click="isOpen = !isOpen" class="current-value">
-      {{ currentSortValue }}
+      {{ moviesStore.currentSortValue }}
       </span> </b>
     <v-container class="container-list" v-if="isOpen">
       <v-list width="300">
@@ -28,12 +28,11 @@ const sortingValue = [
 ];
 
 let isOpen = ref(false);
-let currentSortValue = ref("нет сортировки");
 const moviesStore = useMoviesStore();
 const bookmarksStore = useBookmarksStore();
 
 const chooseSort = (sortValue) => {
-    currentSortValue.value = sortValue;
+    moviesStore.currentSortValue = sortValue;
     isOpen.value = false;
     moviesStore.sortedMovies(sortValue);
     bookmarksStore.sortedBookmarks(sortValue.name);
