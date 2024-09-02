@@ -11,9 +11,14 @@ export const useMoviesStore = defineStore('moviesData', () => {
     const lengthPagination = ref(0);
     const currentSortValue = ref("нет сортировки");
     const sortLocalStorage = localStorage.getItem("sortData");
+    const moviesLocalStorage = localStorage.getItem("moviesData");
 
     if (sortLocalStorage) {
         currentSortValue.value = JSON.parse(sortLocalStorage)._value;
+    }
+
+    if (moviesLocalStorage) {
+        movies.value = JSON.parse(moviesLocalStorage)._value;
     }
 
     watch(() => currentSortValue, (state) => {
@@ -22,9 +27,16 @@ export const useMoviesStore = defineStore('moviesData', () => {
         console.log(movies.value)
     }, { deep: true })
 
+    watch(() => movies, (state) => {
+        localStorage.setItem("moviesData", JSON.stringify(state))
+    }, { deep: true })
+
     const getMovieData = async () => {
-        const response = await axios.get(`http://localhost:3000/docs`);
-        movies.value = response?.data;
+        if (movies.value.length === 0) {
+            const response = await axios.get(`http://localhost:3000/docs`);
+            movies.value = response?.data;
+        }
+
         lengthPagination.value = Math.round(totalMovies.value / pageSize.value);
     }
 
