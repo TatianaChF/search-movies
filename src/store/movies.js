@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
 import axios from "axios";
 import moviesData from "./../api/kinopoisk-1.json";
 
@@ -9,10 +9,34 @@ export const useMoviesStore = defineStore('moviesData', () => {
     const currentPage = ref(1);
     const pageSize = ref(25);
     const lengthPagination = ref(0);
+    const currentSortValue = ref("нет сортировки");
+    const sortLocalStorage = localStorage.getItem("sortData");
+    const moviesLocalStorage = localStorage.getItem("moviesData");
+
+    if (sortLocalStorage) {
+        currentSortValue.value = JSON.parse(sortLocalStorage)._value;
+    }
+
+    if (moviesLocalStorage) {
+        movies.value = JSON.parse(moviesLocalStorage)._value;
+    }
+
+    watch(() => currentSortValue, (state) => {
+        localStorage.setItem("sortData", JSON.stringify(state))
+        sortedMovies(currentSortValue.value)
+        console.log(movies.value)
+    }, { deep: true })
+
+    watch(() => movies, (state) => {
+        localStorage.setItem("moviesData", JSON.stringify(state))
+    }, { deep: true })
 
     const getMovieData = async () => {
-        const response = await axios.get(`http://localhost:3000/docs`);
-        movies.value = response?.data;
+        if (movies.value.length === 0) {
+            const response = await axios.get(`http://localhost:3000/docs`);
+            movies.value = response?.data;
+        }
+
         lengthPagination.value = Math.round(totalMovies.value / pageSize.value);
     }
 
@@ -25,23 +49,29 @@ export const useMoviesStore = defineStore('moviesData', () => {
 
     const sortedMovies = (sortName) => {
         switch(sortName) {
-            case "yearASC":
-                movies.value.sort((a, b) => a.year - b.year);
+            case "году выпуска (по возрастанию)":
+                movies.value = movies.value.sort((a, b) => a.year - b.year);
+                currentSortValue.value = "году выпуска (по возрастанию)";
                 break;
-            case "yearDESC":
-                movies.value.sort((a, b) => b.year - a.year);
+            case "году выпуска (по убыванию)":
+                movies.value = movies.value.sort((a, b) => b.year - a.year);
+                currentSortValue.value = "году выпуска (по убыванию)";
                 break;
-            case "populASC":
-                movies.value.sort((a, b) => a.rating.kp - b.rating.kp);
+            case "рейтингу (по возрастанию)":
+                movies.value = movies.value.sort((a, b) => a.rating.kp - b.rating.kp);
+                currentSortValue.value = "рейтингу (по возрастанию)";
                 break;
-            case "populDESC":
-                movies.value.sort((a, b) => b.rating.kp - a.rating.kp);
+            case "рейтингу (по убыванию)":
+                movies.value = movies.value.sort((a, b) => b.rating.kp - a.rating.kp);
+                currentSortValue.value = "рейтингу (по убыванию)";
                 break;
-            case "lengthASC":
-                movies.value.sort((a, b) => a.movieLength - b.movieLength);
+            case "длительности (по возрастанию)":
+                movies.value = movies.value.sort((a, b) => a.movieLength - b.movieLength);
+                currentSortValue.value = "длительности (по возрастанию)";
                 break;
-            case "lengthDESC":
-                movies.value.sort((a, b) => b.movieLength - a.movieLength);
+            case "длительности (по убыванию)":
+                movies.value = movies.value.sort((a, b) => b.movieLength - a.movieLength);
+                currentSortValue.value = "длительности (по убыванию)";
                 break;
             default:
                 return movies.value;
@@ -56,5 +86,5 @@ export const useMoviesStore = defineStore('moviesData', () => {
         })
     }
 
-    return {movies, displayedMovies, sortedMovies, searchMovie, getMovieData, currentPage, lengthPagination, pageSize}
+    return {movies, displayedMovies, currentSortValue, sortedMovies, searchMovie, getMovieData, currentPage, lengthPagination, pageSize}
 })

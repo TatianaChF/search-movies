@@ -1,12 +1,17 @@
 <template>
   <v-container>
-    <b>Сортировать по: <span @click="isOpen = !isOpen" class="current-value">
-      {{ currentSortValue.title }}
-      </span> </b>
+    <b
+      >Сортировать по:
+      <span @click="isOpen = !isOpen" class="current-value">
+        {{ moviesStore.currentSortValue }}
+      </span>
+    </b>
     <v-container class="container-list" v-if="isOpen">
       <v-list width="300">
         <v-list-item v-for="sort in sortingValue" :key="sort">
-          <p @click="chooseSort(sort)" class="container-list__item">{{ sort.title }}</p>
+          <p @click="chooseSort(sort)" class="container-list__item">
+            {{ sort }}
+          </p>
         </v-list-item>
       </v-list>
     </v-container>
@@ -19,52 +24,39 @@ import { useBookmarksStore } from "../store/bookmarks";
 import { useMoviesStore } from "../store/movies";
 
 const sortingValue = [
-  { name: "yearASC", sort: "year", title: "по году выпуска (по возрастанию)" },
-  { name: "yearDESC", sort: "-year", title: "по году выпуска (по убыванию)" },
-  { name: "populASC", sort: "rating", title: "по рейтингу (по возрастанию)" },
-  { name: "populDESC", sort: "-rating", title: "по рейтингу (по убыванию)" },
-  {
-    name: "lengthASC",
-    sort: "length",
-    title: "по длительности (по возрастанию)",
-  },
-  {
-    name: "lengthDESC",
-    sort: "-length",
-    title: "по длительности (по убыванию)",
-  },
+  "году выпуска (по возрастанию)",
+  "году выпуска (по убыванию)",
+  "рейтингу (по возрастанию)",
+  "рейтингу (по убыванию)",
+  "длительности (по возрастанию)",
+  "длительности (по убыванию)",
 ];
 
 let isOpen = ref(false);
-let currentSortValue = ref({
-  name: "noSort",
-  sort: "no",
-  title: "нет сортировки",
-});
 const moviesStore = useMoviesStore();
 const bookmarksStore = useBookmarksStore();
 
 const chooseSort = (sortValue) => {
-    currentSortValue.value = sortValue;
-    isOpen.value = false;
-    moviesStore.sortedMovies(sortValue.name);
-    bookmarksStore.sortedBookmarks(sortValue.name);
-}
+  moviesStore.currentSortValue = sortValue;
+  isOpen.value = false;
+  moviesStore.sortedMovies(sortValue);
+  bookmarksStore.sortedBookmarks(sortValue.name);
+};
 </script>
 
 <style lang="scss" scoped>
 .current-value {
-    text-decoration-line: underline;
-    cursor: pointer;
+  text-decoration-line: underline;
+  cursor: pointer;
 }
 
 .container-list {
-    position: absolute;
-    margin-left: 120px;
-    z-index: 2;
+  position: absolute;
+  margin-left: 120px;
+  z-index: 2;
 
-    &__item {
-        cursor: pointer;
-    }
+  &__item {
+    cursor: pointer;
+  }
 }
 </style>
