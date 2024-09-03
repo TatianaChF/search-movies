@@ -15,7 +15,14 @@
       :max="maxRating" 
       :min="minRating"  
       thumb-label />
-    <v-slider max-width="100"></v-slider>
+    <p>Хронометраж</p>
+    <v-slider 
+      v-model="lengthMovie"
+      max-width="150" 
+      :max="maxLength" 
+      :min="minLength"  
+      step="1" 
+      thumb-label />
   </v-card>
 </template>
 
@@ -26,10 +33,12 @@ import { useMoviesStore } from "../store/movies";
 const moviesStore = useMoviesStore();
 const yearsMovies = [];
 const ratingsMovies = [];
+const lengthsMovies = [];
 
 for (let i = 0; i < moviesStore.movies.length; i++) {
     yearsMovies.push(moviesStore.movies[i].year);
     ratingsMovies.push(moviesStore.movies[i].rating.kp);
+    lengthsMovies.push(moviesStore.movies[i].movieLength);
 }
 
 const maxYear = Math.max(...yearsMovies);
@@ -38,6 +47,9 @@ const year = ref(maxYear);
 const maxRating = Math.max(...ratingsMovies);
 const minRating = Math.min(...ratingsMovies);
 const rating = ref(maxRating);
+const maxLength = Math.max(...lengthsMovies);
+const minLength = Math.min(...lengthsMovies);
+const lengthMovie = ref(maxLength);
 
-console.log(rating);
+console.log(minLength);
 </script>
