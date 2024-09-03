@@ -2,11 +2,13 @@
   <v-card width="300">
     <p>Год</p>
     <v-slider 
+      v-model="year"
       max-width="150" 
       :max="maxYear" 
       :min="minYear" 
       step="1" 
       thumb-label />
+    <p></p>
     <v-slider max-width="100"></v-slider>
     <v-slider max-width="100"></v-slider>
   </v-card>
@@ -24,6 +26,7 @@ for (let i = 0; i < moviesStore.movies.length; i++) {
 
 const maxYear = Math.max(...yearsMovies);
 const minYear = Math.min(...yearsMovies);
+const year = ref(maxYear);
 
 console.log(minYear);
 </script>
