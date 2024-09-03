@@ -59,7 +59,7 @@
           </template>
         </v-slider>
     </v-container>
-    
+    <v-btn>Применить</v-btn>
   </v-card>
 </template>
 
