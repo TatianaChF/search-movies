@@ -1,5 +1,5 @@
 <template>
-  <v-container width="400" class="container">
+  <v-card width="400" class="container">
     <v-container>
       <p>Год</p>
       <v-slider 
@@ -60,7 +60,7 @@
         </v-slider>
     </v-container>
     <v-btn>Применить</v-btn>
-  </v-container>
+  </v-card>
 </template>
 
 <script setup>
@@ -93,5 +93,8 @@ const lengthMovie = ref(maxLength);
 .container {
     display: flex;
     justify-content: center;
+    position: absolute;
+    z-index: 2;
+    margin-top: 50px;
 }
 </style>
