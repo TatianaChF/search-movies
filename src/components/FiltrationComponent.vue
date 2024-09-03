@@ -1,5 +1,5 @@
 <template>
-  <v-card width="400" class="container">
+  <v-container width="400" class="container">
     <v-container>
       <p>Год</p>
       <v-slider 
@@ -60,7 +60,7 @@
         </v-slider>
     </v-container>
     <v-btn>Применить</v-btn>
-  </v-card>
+  </v-container>
 </template>
 
 <script setup>
