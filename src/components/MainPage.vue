@@ -1,7 +1,12 @@
 <template>
-  <v-btn @click="isFilterOpen = !isFilterOpen" icon="mdi-filter" variant="text" />
-  <filtration-component v-if="isFilterOpen" />
-  <sorting-component />
+  <v-container class="container__sort">
+    <v-btn 
+      @click="isFilterOpen = !isFilterOpen" 
+      icon="mdi-filter" 
+      variant="text" />
+    <filtration-component v-if="isFilterOpen" />
+    <sorting-component />
+  </v-container>
   <v-container class="container">
     <v-container
       class="container__card"
@@ -50,6 +55,10 @@ onBeforeMount(() => {
     &__router {
       text-decoration: none;
     }
+  }
+
+  &__sort {
+      display: flex;
   }
 }
 
