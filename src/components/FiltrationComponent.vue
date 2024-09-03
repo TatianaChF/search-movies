@@ -1,5 +1,5 @@
 <template>
-  <v-card width="400">
+  <v-card width="400" class="container">
     <v-container>
       <p>Год</p>
       <v-slider 
@@ -87,6 +87,11 @@ const rating = ref(maxRating);
 const maxLength = Math.max(...lengthsMovies);
 const minLength = Math.min(...lengthsMovies);
 const lengthMovie = ref(maxLength);
-
-console.log(minLength);
 </script>
+
+<style lang="scss" scoped>
+.container {
+    display: flex;
+    justify-content: center;
+}
+</style>
