@@ -1,4 +1,5 @@
 <template>
+  <filtration-component />
   <sorting-component />
   <v-container class="container">
     <v-container
@@ -20,6 +21,7 @@
 <script setup>
 import { useMoviesStore } from "../store/movies";
 import SortingComponent from "./SortingComponent.vue";
+import FiltrationComponent from './FiltrationComponent.vue';
 import MovieCard from "./MovieCard.vue";
 import { ref, onBeforeMount } from "vue";
 
