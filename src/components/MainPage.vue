@@ -1,5 +1,6 @@
 <template>
-  <filtration-component />
+  <v-btn @click="isFilterOpen = !isFilterOpen" icon="mdi-filter" variant="text" />
+  <filtration-component v-if="isFilterOpen" />
   <sorting-component />
   <v-container class="container">
     <v-container
@@ -26,6 +27,7 @@ import MovieCard from "./MovieCard.vue";
 import { ref, onBeforeMount } from "vue";
 
 const moviesStore = useMoviesStore();
+const isFilterOpen = ref(false)
 
 defineProps({
     movieData: Object
