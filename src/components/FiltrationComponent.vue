@@ -1,28 +1,34 @@
 <template>
-  <v-card width="300">
-    <p>Год</p>
-    <v-slider 
-      v-model="year"
-      max-width="150" 
-      :max="maxYear" 
-      :min="minYear" 
-      step="1" 
-      thumb-label />
-    <p>Рейтинг</p>
-    <v-slider 
-      v-model="rating"
-      max-width="150" 
-      :max="maxRating" 
-      :min="minRating"  
-      thumb-label />
-    <p>Хронометраж</p>
-    <v-slider 
-      v-model="lengthMovie"
-      max-width="150" 
-      :max="maxLength" 
-      :min="minLength"  
-      step="1" 
-      thumb-label />
+  <v-card width="200">
+    <v-container>
+      <p>Год</p>
+      <v-slider 
+        v-model="year"
+        max-width="150" 
+        :max="maxYear" 
+        :min="minYear" 
+        step="1" 
+        thumb-label />
+    </v-container>
+    <v-container>
+      <p>Рейтинг</p>
+      <v-slider 
+        v-model="rating"
+        max-width="150" 
+        :max="maxRating" 
+        :min="minRating"  
+        thumb-label />
+    </v-container>
+    <v-container>
+      <p>Хронометраж</p>
+      <v-slider 
+        v-model="lengthMovie"
+        max-width="150" 
+        :max="maxLength" 
+        :min="minLength"  
+        step="1" 
+        thumb-label />
+    </v-container>
   </v-card>
 </template>
 
