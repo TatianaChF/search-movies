@@ -11,15 +11,15 @@ export const useMoviesStore = defineStore('moviesData', () => {
     const lengthPagination = ref(0);
     const currentSortValue = ref("нет сортировки");
     const sortLocalStorage = localStorage.getItem("sortData");
-    const moviesLocalStorage = localStorage.getItem("moviesData");
+    //const moviesLocalStorage = localStorage.getItem("moviesData");
 
     if (sortLocalStorage) {
         currentSortValue.value = JSON.parse(sortLocalStorage)._value;
     }
 
-    if (moviesLocalStorage) {
+    /* if (moviesLocalStorage) {
         movies.value = JSON.parse(moviesLocalStorage)._value;
-    }
+    } */
 
     watch(() => currentSortValue, (state) => {
         localStorage.setItem("sortData", JSON.stringify(state))
@@ -27,9 +27,9 @@ export const useMoviesStore = defineStore('moviesData', () => {
         console.log(movies.value)
     }, { deep: true })
 
-    watch(() => movies, (state) => {
+    /* watch(() => movies, (state) => {
         localStorage.setItem("moviesData", JSON.stringify(state))
-    }, { deep: true })
+    }, { deep: true }) */
 
     const getMovieData = async () => {
         if (movies.value.length === 0) {
@@ -78,6 +78,11 @@ export const useMoviesStore = defineStore('moviesData', () => {
         }
     }
 
+    const filtartionMovies = (filterYear, filterRating, filterLength) => {
+        movies.value = movies.value.filter((movie) => filterYear >= movie.year)
+        .filter((movie) => filterRating >= movie.rating.kp).filter((movie) => filterLength >= movie.movieLength);
+    }
+
     const searchMovie = (movieName) => {
         movies.value = moviesData.docs;
 
@@ -86,5 +91,7 @@ export const useMoviesStore = defineStore('moviesData', () => {
         })
     }
 
-    return {movies, displayedMovies, currentSortValue, sortedMovies, searchMovie, getMovieData, currentPage, lengthPagination, pageSize}
+    return {movies, displayedMovies, currentSortValue, 
+            sortedMovies, searchMovie, getMovieData, 
+            currentPage, lengthPagination, pageSize, filtartionMovies}
 })
