@@ -101,10 +101,6 @@ const maxLength = Math.max(...lengthsMovies);
 const minLength = Math.min(...lengthsMovies);
 const lengthMovie = ref(maxLength);
 
-const chooseFilters = (yearData, ratingData, lengthMovieData) => {
-  moviesStore.filtartionMovies(yearData, ratingData, lengthMovieData);
-  $emit("changeFilterOpen");
-};
 </script>
 
 <style lang="scss" scoped>
