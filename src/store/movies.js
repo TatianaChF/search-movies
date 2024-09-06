@@ -20,7 +20,7 @@ export const useMoviesStore = defineStore('moviesData', () => {
 
     /* if (moviesLocalStorage) {
         movies.value = JSON.parse(moviesLocalStorage)._value;
-    } */
+    } */ 
 
     watch(() => currentSortValue, (state) => {
         localStorage.setItem("sortData", JSON.stringify(state))
@@ -51,27 +51,27 @@ export const useMoviesStore = defineStore('moviesData', () => {
     const sortedMovies = (sortName) => {
         switch(sortName) {
             case "году выпуска (по возрастанию)":
-                movies.value = movies.value.sort((a, b) => a.year - b.year);
+                filteredMovies.value = filteredMovies.value.sort((a, b) => a.year - b.year);
                 currentSortValue.value = "году выпуска (по возрастанию)";
                 break;
             case "году выпуска (по убыванию)":
-                movies.value = movies.value.sort((a, b) => b.year - a.year);
+                filteredMovies.value = filteredMovies.value.sort((a, b) => b.year - a.year);
                 currentSortValue.value = "году выпуска (по убыванию)";
                 break;
             case "рейтингу (по возрастанию)":
-                movies.value = movies.value.sort((a, b) => a.rating.kp - b.rating.kp);
+                filteredMovies.value = filteredMovies.value.sort((a, b) => a.rating.kp - b.rating.kp);
                 currentSortValue.value = "рейтингу (по возрастанию)";
                 break;
             case "рейтингу (по убыванию)":
-                movies.value = movies.value.sort((a, b) => b.rating.kp - a.rating.kp);
+                filteredMovies.value = filteredMovies.value.sort((a, b) => b.rating.kp - a.rating.kp);
                 currentSortValue.value = "рейтингу (по убыванию)";
                 break;
             case "длительности (по возрастанию)":
-                movies.value = movies.value.sort((a, b) => a.movieLength - b.movieLength);
+                filteredMovies.value = filteredMovies.value.sort((a, b) => a.movieLength - b.movieLength);
                 currentSortValue.value = "длительности (по возрастанию)";
                 break;
             case "длительности (по убыванию)":
-                movies.value = movies.value.sort((a, b) => b.movieLength - a.movieLength);
+                filteredMovies.value = filteredMovies.value.sort((a, b) => b.movieLength - a.movieLength);
                 currentSortValue.value = "длительности (по убыванию)";
                 break;
             default:
