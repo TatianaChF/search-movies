@@ -84,6 +84,9 @@ const moviesStore = useMoviesStore();
 const yearsMovies = [];
 const ratingsMovies = [];
 const lengthsMovies = [];
+const filteredYearsMovies = [];
+const filteredRatingMovies = [];
+const filteredLengthMovies = [];
 
 for (let i = 0; i < moviesStore.movies.length; i++) {
   yearsMovies.push(moviesStore.movies[i].year);
@@ -91,16 +94,24 @@ for (let i = 0; i < moviesStore.movies.length; i++) {
   lengthsMovies.push(moviesStore.movies[i].movieLength);
 }
 
+for (let i = 0; i < moviesStore.filteredMovies.length; i++) {
+  filteredYearsMovies.push(moviesStore.filteredMovies[i].year);
+  filteredRatingMovies.push(moviesStore.filteredMovies[i].rating.kp);
+  filteredLengthMovies.push(moviesStore.filteredMovies[i].movieLength);
+}
+
 const maxYear = Math.max(...yearsMovies);
 const minYear = Math.min(...yearsMovies);
-const year = ref(maxYear);
+const year = ref(Math.max(...filteredYearsMovies));
 const maxRating = Math.max(...ratingsMovies);
 const minRating = Math.min(...ratingsMovies);
-const rating = ref(maxRating);
+const rating = ref(Math.max(...filteredRatingMovies));
 const maxLength = Math.max(...lengthsMovies);
 const minLength = Math.min(...lengthsMovies);
-const lengthMovie = ref(maxLength);
+const lengthMovie = ref(Math.max(...filteredLengthMovies));
 
+console.log(maxYear);
+console.log(year.value);
 </script>
 
 <style lang="scss" scoped>
