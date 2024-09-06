@@ -13,13 +13,18 @@ export const useMoviesStore = defineStore('moviesData', () => {
     const currentSortValue = ref("нет сортировки");
     const sortLocalStorage = localStorage.getItem("sortData");
     const moviesLocalStorage = localStorage.getItem("moviesData");
+    const filteredMoviesStorage = localStorage.getItem("filteredMoviesData");
 
     if (sortLocalStorage) {
         currentSortValue.value = JSON.parse(sortLocalStorage)._value;
     }
 
     if (moviesLocalStorage) {
-        filteredMovies.value = JSON.parse(moviesLocalStorage)._value;
+        movies.value = JSON.parse(moviesLocalStorage)._value;
+    }
+
+    if (filteredMoviesStorage) {
+        filteredMovies.value = JSON.parse(filteredMoviesStorage)._value;
     }
 
     watch(() => currentSortValue, (state) => {
@@ -27,8 +32,12 @@ export const useMoviesStore = defineStore('moviesData', () => {
         sortedMovies(currentSortValue.value)
     }, { deep: true })
 
-    watch(() => filteredMovies, (state) => {
+    watch(() => movies, (state) => {
         localStorage.setItem("moviesData", JSON.stringify(state))
+    }, { deep: true })
+
+    watch(() => filteredMovies, (state) => {
+        localStorage.setItem("filteredMoviesData", JSON.stringify(state))
     }, { deep: true })
 
     const getMovieData = async () => {
@@ -95,6 +104,8 @@ export const useMoviesStore = defineStore('moviesData', () => {
             return movie.name.toLowerCase().includes(movieName);
         })
     }
+
+    console.log(filteredMovies.value)
 
     return {movies, displayedMovies, currentSortValue, 
             sortedMovies, searchMovie, getMovieData, 
