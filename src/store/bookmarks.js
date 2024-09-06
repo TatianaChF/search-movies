@@ -43,7 +43,7 @@ export const useBookmarksStore = defineStore('bookmarksData', () => {
                 bookmarks.value.sort((a, b) => b.movieLength - a.movieLength);
                 break;
             default:
-                return movies.value;
+                return bookmarks.value;
         }
     }
 
