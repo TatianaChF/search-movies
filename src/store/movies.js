@@ -1,7 +1,6 @@
 import { defineStore } from "pinia";
 import { ref, computed, watch } from "vue";
 import axios from "axios";
-import moviesData from "./../api/kinopoisk-1.json";
 
 export const useMoviesStore = defineStore('moviesData', () => {
     const movies = ref([]);
