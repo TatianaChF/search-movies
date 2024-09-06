@@ -40,7 +40,7 @@ const chooseSort = (sortValue) => {
   moviesStore.currentSortValue = sortValue;
   isOpen.value = false;
   moviesStore.sortedMovies(sortValue);
-  bookmarksStore.sortedBookmarks(sortValue.name);
+  bookmarksStore.sortedBookmarks(sortValue);
 };
 </script>
 
