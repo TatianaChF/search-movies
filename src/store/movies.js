@@ -32,7 +32,7 @@ export const useMoviesStore = defineStore('moviesData', () => {
     }, { deep: true })
 
     const getMovieData = async () => {
-        if (movies.value.length === 0) {
+        if (filteredMovies.value.length === 0) {
             const response = await axios.get(`http://localhost:3000/docs`);
             movies.value = response?.data;
             filteredMovies.value = response?.data;
