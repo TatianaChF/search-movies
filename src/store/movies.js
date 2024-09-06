@@ -5,7 +5,7 @@ import axios from "axios";
 export const useMoviesStore = defineStore('moviesData', () => {
     const movies = ref([]);
     const filteredMovies = ref([]);
-    const totalMovies = ref(100);
+    const totalMovies = ref(0);
     const currentPage = ref(1);
     const pageSize = ref(25);
     const lengthPagination = ref(0);
@@ -46,6 +46,7 @@ export const useMoviesStore = defineStore('moviesData', () => {
             filteredMovies.value = response?.data;
         }
 
+        totalMovies.value = filteredMovies.value.length;
         lengthPagination.value = Math.round(totalMovies.value / pageSize.value);
     }
 
