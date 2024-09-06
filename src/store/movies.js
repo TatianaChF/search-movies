@@ -12,24 +12,24 @@ export const useMoviesStore = defineStore('moviesData', () => {
     const lengthPagination = ref(0);
     const currentSortValue = ref("нет сортировки");
     const sortLocalStorage = localStorage.getItem("sortData");
-    //const moviesLocalStorage = localStorage.getItem("moviesData");
+    const moviesLocalStorage = localStorage.getItem("moviesData");
 
     if (sortLocalStorage) {
         currentSortValue.value = JSON.parse(sortLocalStorage)._value;
     }
 
-    /* if (moviesLocalStorage) {
-        movies.value = JSON.parse(moviesLocalStorage)._value;
-    } */ 
+    if (moviesLocalStorage) {
+        filteredMovies.value = JSON.parse(moviesLocalStorage)._value;
+    }
 
     watch(() => currentSortValue, (state) => {
         localStorage.setItem("sortData", JSON.stringify(state))
         sortedMovies(currentSortValue.value)
     }, { deep: true })
 
-    /* watch(() => movies, (state) => {
+    watch(() => filteredMovies, (state) => {
         localStorage.setItem("moviesData", JSON.stringify(state))
-    }, { deep: true }) */
+    }, { deep: true })
 
     const getMovieData = async () => {
         if (movies.value.length === 0) {
