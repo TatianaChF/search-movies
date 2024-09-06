@@ -44,7 +44,7 @@
       </v-slider>
     </v-container>
     <v-container>
-      <p>Хронометраж</p>
+      <p>Хронометраж (в минутах)</p>
       <v-slider
         v-model="lengthMovie"
         max-width="300"
