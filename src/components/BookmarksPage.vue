@@ -6,7 +6,7 @@
           @click="isFilterOpen = !isFilterOpen" 
           icon="mdi-filter" 
           variant="text" />
-        <filtration-component v-if="isFilterOpen" />
+        <filtration-component v-if="isFilterOpen" @change-filter-open="isFilterOpen = false" />
         </v-container>
         <sorting-component />
       </v-container>
