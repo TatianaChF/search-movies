@@ -92,9 +92,6 @@ export const useMoviesStore = defineStore('moviesData', () => {
         filteredMovies.value = movies.value.filter((movie) => filterYear >= movie.year)
         .filter((movie) => filterRating >= movie.rating.kp)
         .filter((movie) => filterLength >= movie.movieLength);
-
-        console.log(movies.value);
-        console.log(filteredMovies.value);
     }
 
     const searchMovie = (movieName) => {
@@ -102,8 +99,6 @@ export const useMoviesStore = defineStore('moviesData', () => {
             return movie.name.toLowerCase().includes(movieName);
         })
     }
-
-    console.log(filteredMovies.value)
 
     return {movies, displayedMovies, currentSortValue, 
             sortedMovies, searchMovie, getMovieData, 

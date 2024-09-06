@@ -109,9 +109,6 @@ const rating = ref(Math.max(...filteredRatingMovies));
 const maxLength = Math.max(...lengthsMovies);
 const minLength = Math.min(...lengthsMovies);
 const lengthMovie = ref(Math.max(...filteredLengthMovies));
-
-console.log(maxYear);
-console.log(year.value);
 </script>
 
 <style lang="scss" scoped>
