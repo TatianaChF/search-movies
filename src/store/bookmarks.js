@@ -52,11 +52,7 @@ export const useBookmarksStore = defineStore('bookmarksData', () => {
         filteredBookmarks.value = bookmarks.value.filter((movie) => year >= movie.year)
         .filter((movie) => rating >= movie.rating.kp)
         .filter((movie) => lengthMovie >= movie.movieLength);
-
-        console.log(filteredBookmarks.value);
     }
-
-    console.log(filteredBookmarks.value);
 
     watch(() => bookmarks, (state) => {
         localStorage.setItem("bookmarksData", JSON.stringify(state))
