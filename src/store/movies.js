@@ -45,7 +45,7 @@ export const useMoviesStore = defineStore('moviesData', () => {
         const startIndex = (currentPage.value - 1) * pageSize.value;
         const endIndex = startIndex + pageSize.value;
 
-        return movies.value.slice(startIndex, endIndex);
+        return filteredMovies.value.slice(startIndex, endIndex);
     })
 
     const sortedMovies = (sortName) => {
