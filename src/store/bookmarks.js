@@ -3,7 +3,7 @@ import { ref, watch } from "vue";
 
 export const useBookmarksStore = defineStore('bookmarksData', () => {
     const bookmarks = ref([]);
-    const filteredBookmarks = ref(bookmarks.value);
+    const filteredBookmarks = ref(bookmarks);
     const bookmarksLocalStorage = localStorage.getItem("bookmarksData");
 
     if (bookmarksLocalStorage) {
@@ -56,10 +56,12 @@ export const useBookmarksStore = defineStore('bookmarksData', () => {
         console.log(filteredBookmarks.value);
     }
 
+    console.log(filteredBookmarks.value);
+
     watch(() => bookmarks, (state) => {
         localStorage.setItem("bookmarksData", JSON.stringify(state))
     }, { deep: true })
 
     return {bookmarks, addMovieToBookmarks, sortedBookmarks, 
-            clearBookmarks, filtrationBookmarks}
+            clearBookmarks, filtrationBookmarks, filteredBookmarks}
 })

@@ -15,7 +15,7 @@
     <v-container class="container" v-if="bookmarksStore.bookmarks.length > 0">
       <v-container 
         class="container__card"
-        v-for="movie in bookmarksStore.bookmarks" 
+        v-for="movie in bookmarksStore.filteredBookmarks" 
         :key="movie.id">
           <movie-card :movieData="movie" />
         </v-container>
