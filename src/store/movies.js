@@ -5,6 +5,7 @@ import moviesData from "./../api/kinopoisk-1.json";
 
 export const useMoviesStore = defineStore('moviesData', () => {
     const movies = ref([]);
+    const filteredMovies = ref([]);
     const totalMovies = ref(100);
     const currentPage = ref(1);
     const pageSize = ref(25);
@@ -24,7 +25,6 @@ export const useMoviesStore = defineStore('moviesData', () => {
     watch(() => currentSortValue, (state) => {
         localStorage.setItem("sortData", JSON.stringify(state))
         sortedMovies(currentSortValue.value)
-        console.log(movies.value)
     }, { deep: true })
 
     /* watch(() => movies, (state) => {
@@ -35,6 +35,7 @@ export const useMoviesStore = defineStore('moviesData', () => {
         if (movies.value.length === 0) {
             const response = await axios.get(`http://localhost:3000/docs`);
             movies.value = response?.data;
+            filteredMovies.value = response?.data;
         }
 
         lengthPagination.value = Math.round(totalMovies.value / pageSize.value);
@@ -79,8 +80,12 @@ export const useMoviesStore = defineStore('moviesData', () => {
     }
 
     const filtartionMovies = (filterYear, filterRating, filterLength) => {
-        movies.value = movies.value.filter((movie) => filterYear >= movie.year)
-        .filter((movie) => filterRating >= movie.rating.kp).filter((movie) => filterLength >= movie.movieLength);
+        filteredMovies.value = movies.value.filter((movie) => filterYear >= movie.year)
+        .filter((movie) => filterRating >= movie.rating.kp)
+        .filter((movie) => filterLength >= movie.movieLength);
+
+        console.log(movies.value);
+        console.log(filteredMovies.value);
     }
 
     const searchMovie = (movieName) => {
@@ -93,5 +98,6 @@ export const useMoviesStore = defineStore('moviesData', () => {
 
     return {movies, displayedMovies, currentSortValue, 
             sortedMovies, searchMovie, getMovieData, 
-            currentPage, lengthPagination, pageSize, filtartionMovies}
+            currentPage, lengthPagination, pageSize, 
+            filtartionMovies, filteredMovies}
 })
