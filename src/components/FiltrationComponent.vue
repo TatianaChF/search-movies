@@ -68,6 +68,7 @@
     <v-btn
       @click="
         moviesStore.filtartionMovies(year, rating, lengthMovie);
+        bookmarksStore.filtrationBookmarks(year, rating, lengthMovie);
         $emit('changeFilterOpen');
       "
     >
@@ -78,9 +79,11 @@
 
 <script setup>
 import { ref } from "vue";
+import { useBookmarksStore } from "../store/bookmarks";
 import { useMoviesStore } from "../store/movies";
 
 const moviesStore = useMoviesStore();
+const bookmarksStore = useBookmarksStore();
 const yearsMovies = [];
 const ratingsMovies = [];
 const lengthsMovies = [];
