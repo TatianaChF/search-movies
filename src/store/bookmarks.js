@@ -24,9 +24,6 @@ export const useBookmarksStore = defineStore('bookmarksData', () => {
             bookmarks.value.push(movie);
             filteredBookmarks.value.push(movie);
         }
-
-        console.log(bookmarks.value);
-        console.log(filteredBookmarks.value)
     }
 
     const clearBookmarks = () => {
