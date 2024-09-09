@@ -3,20 +3,30 @@ import { ref, watch } from "vue";
 
 export const useBookmarksStore = defineStore('bookmarksData', () => {
     const bookmarks = ref([]);
-    const filteredBookmarks = ref(bookmarks);
+    const filteredBookmarks = ref([]);
     const bookmarksLocalStorage = localStorage.getItem("bookmarksData");
+    const filteredBookmarksLocalStorage = localStorage.getItem("filteredBookmarks");
 
     if (bookmarksLocalStorage) {
         bookmarks.value = JSON.parse(bookmarksLocalStorage)._value;
+    }
+
+    if (filteredBookmarksLocalStorage) {
+        filteredBookmarks.value = JSON.parse(filteredBookmarksLocalStorage)._value;
     }
 
     const addMovieToBookmarks = (movie) => {
         const assessMovie = bookmarks.value.findIndex(({name: movieName}) => movieName === movie.name);
         if (assessMovie > -1) {
             bookmarks.value.splice(assessMovie, 1);
+            filteredBookmarks.value.splice(assessMovie, 1);
         } else {
             bookmarks.value.push(movie);
+            filteredBookmarks.value.push(movie);
         }
+
+        console.log(bookmarks.value);
+        console.log(filteredBookmarks.value)
     }
 
     const clearBookmarks = () => {
@@ -56,6 +66,10 @@ export const useBookmarksStore = defineStore('bookmarksData', () => {
 
     watch(() => bookmarks, (state) => {
         localStorage.setItem("bookmarksData", JSON.stringify(state))
+    }, { deep: true })
+
+    watch(() => filteredBookmarks, (state) => {
+        localStorage.setItem("filteredBookmarks", JSON.stringify(state))
     }, { deep: true })
 
     return {bookmarks, addMovieToBookmarks, sortedBookmarks, 
