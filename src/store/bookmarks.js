@@ -3,6 +3,7 @@ import { ref, watch } from "vue";
 
 export const useBookmarksStore = defineStore('bookmarksData', () => {
     const bookmarks = ref([]);
+    const filteredBookmarks = ref(bookmarks);
     const bookmarksLocalStorage = localStorage.getItem("bookmarksData");
 
     if (bookmarksLocalStorage) {
@@ -24,32 +25,39 @@ export const useBookmarksStore = defineStore('bookmarksData', () => {
 
     const sortedBookmarks = (sortName) => {
         switch(sortName) {
-            case "yearASC":
+            case "году выпуска (по возрастанию)":
                 bookmarks.value.sort((a, b) => a.year - b.year);
                 break;
-            case "yearDESC":
+            case "году выпуска (по убыванию)":
                 bookmarks.value.sort((a, b) => b.year - a.year);
                 break;
-            case "populASC":
+            case "рейтингу (по возрастанию)":
                 bookmarks.value.sort((a, b) => a.rating.kp - b.rating.kp);
                 break;
-            case "populDESC":
+            case "рейтингу (по убыванию)":
                 bookmarks.value.sort((a, b) => b.rating.kp - a.rating.kp);
                 break;
-            case "lengthASC":
+            case "длительности (по возрастанию)":
                 bookmarks.value.sort((a, b) => a.movieLength - b.movieLength);
                 break;
-            case "lengthDESC":
+            case "длительности (по убыванию)":
                 bookmarks.value.sort((a, b) => b.movieLength - a.movieLength);
                 break;
             default:
-                return movies.value;
+                return bookmarks.value;
         }
+    }
+
+    const filtrationBookmarks = (year, rating, lengthMovie) => {
+        filteredBookmarks.value = bookmarks.value.filter((movie) => year >= movie.year)
+        .filter((movie) => rating >= movie.rating.kp)
+        .filter((movie) => lengthMovie >= movie.movieLength);
     }
 
     watch(() => bookmarks, (state) => {
         localStorage.setItem("bookmarksData", JSON.stringify(state))
     }, { deep: true })
 
-    return {bookmarks, addMovieToBookmarks, sortedBookmarks, clearBookmarks}
+    return {bookmarks, addMovieToBookmarks, sortedBookmarks, 
+            clearBookmarks, filtrationBookmarks, filteredBookmarks}
 })
