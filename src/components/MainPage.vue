@@ -1,5 +1,12 @@
 <template>
-  <sorting-component />
+  <v-container class="container__sort">
+    <v-btn 
+      @click="isFilterOpen = !isFilterOpen" 
+      icon="mdi-filter" 
+      variant="text" />
+    <filtration-component v-if="isFilterOpen" @change-filter-open="isFilterOpen = false" />
+    <sorting-component />
+  </v-container>
   <v-container class="container">
     <v-container
       class="container__card"
@@ -20,10 +27,12 @@
 <script setup>
 import { useMoviesStore } from "../store/movies";
 import SortingComponent from "./SortingComponent.vue";
+import FiltrationComponent from './FiltrationComponent.vue';
 import MovieCard from "./MovieCard.vue";
 import { ref, onBeforeMount } from "vue";
 
 const moviesStore = useMoviesStore();
+const isFilterOpen = ref(false)
 
 defineProps({
     movieData: Object
@@ -46,6 +55,10 @@ onBeforeMount(() => {
     &__router {
       text-decoration: none;
     }
+  }
+
+  &__sort {
+      display: flex;
   }
 }
 

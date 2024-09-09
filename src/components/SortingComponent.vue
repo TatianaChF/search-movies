@@ -29,7 +29,7 @@ const sortingValue = [
   "рейтингу (по возрастанию)",
   "рейтингу (по убыванию)",
   "длительности (по возрастанию)",
-  "длительности (по убыванию)",
+  "длительности (по убыванию)"
 ];
 
 let isOpen = ref(false);
@@ -40,7 +40,7 @@ const chooseSort = (sortValue) => {
   moviesStore.currentSortValue = sortValue;
   isOpen.value = false;
   moviesStore.sortedMovies(sortValue);
-  bookmarksStore.sortedBookmarks(sortValue.name);
+  bookmarksStore.sortedBookmarks(sortValue);
 };
 </script>
 
