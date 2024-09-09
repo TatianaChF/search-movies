@@ -111,7 +111,6 @@ const minRating = Math.min(...ratingsMovies);
 const rating = ref(Math.max(...filteredRatingMovies));
 const maxLength = Math.max(...lengthsMovies);
 const minLength = Math.min(...lengthsMovies);
-const lengthMovie = ref(maxLength);
 const lengthMovie = ref(Math.max(...filteredLengthMovies));
 </script>
 
