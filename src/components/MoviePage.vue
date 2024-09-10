@@ -26,7 +26,7 @@
         />
       </v-container>
     </v-card>
-    <recommended-movies :movies="moviesStore.movies" :movie="movieData" />
+    <recommended-movies :movie="movieData" />
   </v-container>
 </template>
 
@@ -53,7 +53,6 @@ const ratingData = ref({
 const isAddBookmarks = ref(false);
 
 defineProps({
-  movies: Array,
   movie: Object
 })
 
