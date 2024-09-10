@@ -1,6 +1,10 @@
 <template>
   <h3>Рекоммендуем посмотреть</h3>
-  <p>Список фильмов</p>
+  <v-container >
+    kcsocf
+  </v-container>
 </template>
 
-<script serup></script>
+<script serup>
+const props = ["movies", "movie"];
+</script>

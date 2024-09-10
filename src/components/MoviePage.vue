@@ -26,7 +26,7 @@
         />
       </v-container>
     </v-card>
-    <recommended-movies />
+    <recommended-movies :movies="moviesStore.movies" :movie="movieData" />
   </v-container>
 </template>
 
@@ -51,6 +51,11 @@ const ratingData = ref({
   ratingValue: rating.value,
 });
 const isAddBookmarks = ref(false);
+
+defineProps({
+  movies: Array,
+  movie: Object
+})
 
 // цикл для определения оценки фильма (оценивался ли фильм пользователем)
 for (let i = 0; i < ratingStore.rating.length; i++) {
