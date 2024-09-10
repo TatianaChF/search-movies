@@ -1,6 +1,5 @@
 <template>
-    <router-link :to="props.movieData.name" class="container__card__router">
-        <v-card width="250" 
+        <v-card width="250" @click="router.push(`/${props.movieData.name}`)"
         @mouseenter="isMouseEnter = true" 
         @mouseleave="isMouseEnter = false">
           <v-img :src="props.movieData.poster.previewUrl" width="250" />
@@ -16,16 +15,17 @@
             </v-container>
           </v-card>
         </v-card>
-    </router-link>
 </template>
 
 <script setup>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 import { useBookmarksStore } from "../store/bookmarks";
 
 const isMouseEnter = ref(false);
 const textBookmarks = ref("нет в закладках")
 const bookmarksStore = useBookmarksStore();
+const router = useRouter();
 const props = defineProps(["movieData"]);
 
 for (let i = 0; i < bookmarksStore.bookmarks.length; i++) {

@@ -26,6 +26,7 @@
         />
       </v-container>
     </v-card>
+    <recommended-movies :movie="movieData" />
   </v-container>
 </template>
 
@@ -35,6 +36,7 @@ import { useRoute } from "vue-router";
 import { useMoviesStore } from "../store/movies";
 import { useRatingStore } from "../store/rating";
 import { useBookmarksStore } from "../store/bookmarks";
+import RecommendedMovies from "../components/RecommendedMovies.vue";
 
 const moviesStore = useMoviesStore();
 const route = useRoute();
@@ -49,6 +51,10 @@ const ratingData = ref({
   ratingValue: rating.value,
 });
 const isAddBookmarks = ref(false);
+
+defineProps({
+  movie: Object
+})
 
 // цикл для определения оценки фильма (оценивался ли фильм пользователем)
 for (let i = 0; i < ratingStore.rating.length; i++) {
