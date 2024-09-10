@@ -14,7 +14,7 @@ function toggleTheme() {
 
 <template>
   <v-container class="header">
-    <h1>MOVIES</h1>
+    <h1 @click="router.push({name: 'Home'})">MOVIES</h1>
     <search-movie />
     <v-btn @click="router.push({name: 'Bookmarks'})">закладки</v-btn>
     <v-btn @click="toggleTheme">Изменить тему</v-btn>
