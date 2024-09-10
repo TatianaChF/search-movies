@@ -26,6 +26,7 @@
         />
       </v-container>
     </v-card>
+    <recommended-movies />
   </v-container>
 </template>
 
@@ -35,6 +36,7 @@ import { useRoute } from "vue-router";
 import { useMoviesStore } from "../store/movies";
 import { useRatingStore } from "../store/rating";
 import { useBookmarksStore } from "../store/bookmarks";
+import RecommendedMovies from "../components/RecommendedMovies.vue";
 
 const moviesStore = useMoviesStore();
 const route = useRoute();
