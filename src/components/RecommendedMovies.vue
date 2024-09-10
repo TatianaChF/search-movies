@@ -1,8 +1,12 @@
 <template>
   <v-container v-if="recommendedMovies.length > 0">
-    <h3>Рекоммендуем посмотреть</h3>
-    <v-container v-for="movie in recommendedMovies" :key="movie">
-        <movie-card :movieData="movie" />
+    <h2>Рекоммендуем посмотреть</h2>
+    <v-container class="container"> 
+        <v-container v-for="movie in recommendedMovies" 
+        :key="movie" 
+        class="container__card">
+            <movie-card :movieData="movie" />
+        </v-container>
     </v-container>
   </v-container>
 </template>
@@ -29,3 +33,14 @@ for (let i = 0; i < moviesStore.movies.length; i++) {
     if (recommendedMovies.length == 4) break;
 }
 </script>
+
+<style lang="scss" scoped>
+.container {
+    display: flex;
+    flex-wrap: wrap;
+
+    &__card {
+        flex: 50px;
+    }
+}
+</style>
