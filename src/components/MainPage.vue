@@ -45,24 +45,5 @@ onBeforeMount(() => {
 </script>
 
 <style lang="scss" scoped>
-.container {
-  display: flex;
-  flex-wrap: wrap;
-
-  &__card {
-    flex: 250px;
-
-    &__router {
-      text-decoration: none;
-    }
-  }
-
-  &__sort {
-      display: flex;
-  }
-}
-
-.text {
-  text-align: center;
-}
+@import "./../assets/style.scss";
 </style>
