@@ -34,9 +34,5 @@ watch(() => theme, (state) => {
 </template>
 
 <style scoped>
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+@import "./assets/style.scss";
 </style>
