@@ -83,19 +83,5 @@ const changeStyleBtn = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-.container-movie {
-  &__card {
-    display: flex;
-    margin: auto;
-  }
-
-  &__text {
-    text-align: left;
-  }
-
-  &__name {
-    display: flex;
-    justify-content: space-between;
-  }
-}
+@import "./../assets/style.scss";
 </style>

@@ -35,3 +35,19 @@
     text-align: left;
   }
 }
+
+.container-movie {
+  &__card {
+    display: flex;
+    margin: auto;
+  }
+
+  &__text {
+    text-align: left;
+  }
+
+  &__name {
+    display: flex;
+    justify-content: space-between;
+  }
+}
