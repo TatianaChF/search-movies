@@ -35,12 +35,5 @@ for (let i = 0; i < moviesStore.movies.length; i++) {
 </script>
 
 <style lang="scss" scoped>
-.container {
-    display: flex;
-    flex-wrap: wrap;
-
-    &__card {
-        flex: 50px;
-    }
-}
+@import "./../assets/style.scss";
 </style>
