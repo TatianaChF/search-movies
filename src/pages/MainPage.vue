@@ -26,9 +26,9 @@
 
 <script setup>
 import { useMoviesStore } from "../store/movies";
-import SortingComponent from "./SortingComponent.vue";
-import FiltrationComponent from './FiltrationComponent.vue';
-import MovieCard from "./MovieCard.vue";
+import SortingComponent from "./../components/SortingComponent.vue";
+import FiltrationComponent from './../components/FiltrationComponent.vue';
+import MovieCard from "./../components/MovieCard.vue";
 import { ref, onBeforeMount } from "vue";
 
 const moviesStore = useMoviesStore();
@@ -45,24 +45,5 @@ onBeforeMount(() => {
 </script>
 
 <style lang="scss" scoped>
-.container {
-  display: flex;
-  flex-wrap: wrap;
-
-  &__card {
-    flex: 250px;
-
-    &__router {
-      text-decoration: none;
-    }
-  }
-
-  &__sort {
-      display: flex;
-  }
-}
-
-.text {
-  text-align: center;
-}
+@import "./../assets/style.scss";
 </style>

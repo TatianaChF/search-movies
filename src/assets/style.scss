@@ -1,0 +1,91 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.current-value {
+  text-decoration-line: underline;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  
+  &__card {
+    flex: 250px;
+  
+    &__router {
+      text-decoration: none;
+    }
+  }
+  
+  &__sort {
+      display: flex;
+  }
+}
+  
+.text {
+  text-align: center;
+
+  &__extended {
+    text-align: left;
+  }
+}
+
+.container-movie {
+  &__card {
+    display: flex;
+    margin: auto;
+  }
+
+  &__text {
+    text-align: left;
+  }
+
+  &__name {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.container-list {
+  position: absolute;
+  margin-left: 120px;
+  z-index: 2;
+
+  &__item {
+    cursor: pointer;
+  }
+}
+
+.sort {
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+
+  &__component {
+    margin-left: -10px;
+  }
+
+  &__filter {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.filter {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  z-index: 2;
+  margin-top: 50px;
+}

@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import { ref, watch, computed } from "vue";
+import { ref, watch, computed, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { useMoviesStore } from "../store/movies";
 import { useRatingStore } from "../store/rating";
@@ -54,6 +54,10 @@ const isAddBookmarks = ref(false);
 
 defineProps({
   movie: Object
+})
+
+onMounted(() => {
+  window.scrollTo(0, 0);
 })
 
 // цикл для определения оценки фильма (оценивался ли фильм пользователем)
@@ -83,19 +87,5 @@ const changeStyleBtn = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-.container-movie {
-  &__card {
-    display: flex;
-    margin: auto;
-  }
-
-  &__text {
-    text-align: left;
-  }
-
-  &__name {
-    display: flex;
-    justify-content: space-between;
-  }
-}
+@import "./../assets/style.scss";
 </style>

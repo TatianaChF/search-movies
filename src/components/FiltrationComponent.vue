@@ -1,5 +1,5 @@
 <template>
-  <v-card width="400" class="container">
+  <v-card width="400" class="filter">
     <v-container>
       <p>Год</p>
       <v-slider
@@ -115,11 +115,5 @@ const lengthMovie = ref(Math.max(...filteredLengthMovies));
 </script>
 
 <style lang="scss" scoped>
-.container {
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  z-index: 2;
-  margin-top: 50px;
-}
+@import "./../assets/style.scss";
 </style>

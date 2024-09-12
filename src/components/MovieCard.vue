@@ -37,31 +37,5 @@ for (let i = 0; i < bookmarksStore.bookmarks.length; i++) {
 </script>
 
 <style lang="scss" scoped>
-.container {
-  display: flex;
-  flex-wrap: wrap;
-
-  &__card {
-    flex: 250px;
-
-    &__router {
-      text-decoration: none;
-    }
-  }
-}
-
-.text {
-  text-align: center;
-
-  &__extended {
-    text-align: left;
-  }
-}
-
-.title {
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  gap: 2px;
-}
+@import "./../assets/style.scss";
 </style>
