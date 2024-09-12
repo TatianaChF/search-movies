@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import { ref, watch, computed } from "vue";
+import { ref, watch, computed, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { useMoviesStore } from "../store/movies";
 import { useRatingStore } from "../store/rating";
@@ -54,6 +54,10 @@ const isAddBookmarks = ref(false);
 
 defineProps({
   movie: Object
+})
+
+onMounted(() => {
+  window.scrollTo(0, 0);
 })
 
 // цикл для определения оценки фильма (оценивался ли фильм пользователем)
