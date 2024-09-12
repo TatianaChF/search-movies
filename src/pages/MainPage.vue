@@ -26,9 +26,9 @@
 
 <script setup>
 import { useMoviesStore } from "../store/movies";
-import SortingComponent from "./SortingComponent.vue";
-import FiltrationComponent from './FiltrationComponent.vue';
-import MovieCard from "./MovieCard.vue";
+import SortingComponent from "./../components/SortingComponent.vue";
+import FiltrationComponent from './../components/FiltrationComponent.vue';
+import MovieCard from "./../components/MovieCard.vue";
 import { ref, onBeforeMount } from "vue";
 
 const moviesStore = useMoviesStore();

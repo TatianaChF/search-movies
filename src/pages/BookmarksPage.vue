@@ -30,9 +30,9 @@
 
 <script setup>
 import { useBookmarksStore } from "../store/bookmarks";
-import MovieCard from "./MovieCard.vue";
-import SortingComponent from "./SortingComponent.vue";
-import FiltrationComponent from "./FiltrationComponent.vue";
+import MovieCard from "./../components/MovieCard.vue";
+import SortingComponent from "./../components/SortingComponent.vue";
+import FiltrationComponent from "./../components/FiltrationComponent.vue";
 import { ref } from "vue";
 
 const isFilterOpen = ref(false);
