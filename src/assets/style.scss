@@ -11,6 +11,11 @@
   gap: 2px;
 }
 
+.current-value {
+  text-decoration-line: underline;
+  cursor: pointer;
+}
+
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -49,5 +54,15 @@
   &__name {
     display: flex;
     justify-content: space-between;
+  }
+}
+
+.container-list {
+  position: absolute;
+  margin-left: 120px;
+  z-index: 2;
+
+  &__item {
+    cursor: pointer;
   }
 }

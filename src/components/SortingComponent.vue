@@ -45,18 +45,5 @@ const chooseSort = (sortValue) => {
 </script>
 
 <style lang="scss" scoped>
-.current-value {
-  text-decoration-line: underline;
-  cursor: pointer;
-}
-
-.container-list {
-  position: absolute;
-  margin-left: 120px;
-  z-index: 2;
-
-  &__item {
-    cursor: pointer;
-  }
-}
+@import "./../assets/style.scss";
 </style>
