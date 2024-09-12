@@ -66,3 +66,18 @@
     cursor: pointer;
   }
 }
+
+.sort {
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+
+  &__component {
+    margin-left: -10px;
+  }
+
+  &__filter {
+    display: flex;
+    align-items: center;
+  }
+}
