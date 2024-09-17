@@ -1,3 +1,13 @@
+<template>
+  <v-container class="header">
+    <h1 @click="router.push({name: 'Home'})">MOVIES</h1>
+    <search-movie />
+    <v-btn @click="router.push({name: 'Bookmarks'})">закладки</v-btn>
+    <v-btn @click="toggleTheme">Изменить тему</v-btn>
+  </v-container>
+  <RouterView :key="route.params.name" />
+</template>
+
 <script setup>
 import { useTheme } from "vuetify";
 import { RouterView, useRouter, useRoute } from 'vue-router';
@@ -22,16 +32,6 @@ watch(() => theme, (state) => {
 }, { deep: true }) 
 
 </script>
-
-<template>
-  <v-container class="header">
-    <h1 @click="router.push({name: 'Home'})">MOVIES</h1>
-    <search-movie />
-    <v-btn @click="router.push({name: 'Bookmarks'})">закладки</v-btn>
-    <v-btn @click="toggleTheme">Изменить тему</v-btn>
-  </v-container>
-  <RouterView :key="route.params.name" />
-</template>
 
 <style scoped>
 @import "./assets/style.scss";
