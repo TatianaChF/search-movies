@@ -4,7 +4,9 @@
       @click="isFilterOpen = !isFilterOpen" 
       icon="mdi-filter" 
       variant="text" />
-    <filtration-component v-if="isFilterOpen" @change-filter-open="isFilterOpen = false" />
+    <filtration-component 
+      v-if="isFilterOpen" 
+      @change-filter-open="isFilterOpen = false" />
     <sorting-component />
   </v-container>
   <v-container class="container">

@@ -1,11 +1,17 @@
 <template>
   <v-container class="container-movie">
-    <v-card class="container-movie__card" width="1000">
-      <v-img :src="movieData.poster.url" width="400" />
+    <v-card 
+      class="container-movie__card" 
+      width="1000">
+      <v-img 
+        :src="movieData.poster.url" 
+        width="400" />
       <v-container class="container-movie__text">
         <v-conatiner class="container-movie__name">
           <h1>{{ movieData.name }}</h1>
-          <v-btn :icon="changeStyleBtn" @click="
+          <v-btn 
+            :icon="changeStyleBtn" 
+            @click="
             bookmarksStore.addMovieToBookmarks(movieData);
             isAddBookmarks = !isAddBookmarks" />
         </v-conatiner>

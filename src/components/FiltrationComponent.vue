@@ -1,5 +1,7 @@
 <template>
-  <v-card width="400" class="filter">
+  <v-card 
+    width="400" 
+    class="filter">
     <v-container>
       <p>Год</p>
       <v-slider

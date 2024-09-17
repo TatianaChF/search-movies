@@ -1,15 +1,24 @@
 <template>
-        <v-card width="250" @click="router.push(`/${props.movieData.name}`)"
+        <v-card 
+        width="250" 
+        @click="router.push(`/${props.movieData.name}`)"
         @mouseenter="isMouseEnter = true" 
         @mouseleave="isMouseEnter = false">
-          <v-img :src="props.movieData.poster.previewUrl" width="250" />
+          <v-img 
+            :src="props.movieData.poster.previewUrl" 
+            width="250" />
           <v-card class="text">
             <h3>{{ props.movieData.name }}</h3>
             <p class="title">{{ props.movieData.year }}г, 
-              <v-icon icon="mdi-star" color="#FFD700" size="20"></v-icon>
+              <v-icon 
+                icon="mdi-star" 
+                color="#FFD700" 
+                size="20" />
               {{ props.movieData.rating.kp }}
             </p>
-            <v-container v-if="isMouseEnter" class="text__extended">
+            <v-container 
+              class="text__extended"
+              v-if="isMouseEnter">
               <p>{{ props.movieData.shortDescription }}</p>
               <p><b>{{ textBookmarks }}</b></p>
             </v-container>

@@ -1,15 +1,23 @@
 <template>
   <v-container>
-    <b
-      >Сортировать по:
-      <span @click="isOpen = !isOpen" class="current-value">
+    <b>
+      Сортировать по:
+      <span 
+        @click="isOpen = !isOpen" 
+        class="current-value">
         {{ moviesStore.currentSortValue }}
       </span>
     </b>
-    <v-container class="container-list" v-if="isOpen">
+    <v-container 
+      class="container-list" 
+      v-if="isOpen">
       <v-list width="300">
-        <v-list-item v-for="sort in sortingValue" :key="sort">
-          <p @click="chooseSort(sort)" class="container-list__item">
+        <v-list-item 
+          v-for="sort in sortingValue" 
+          :key="sort">
+          <p 
+            @click="chooseSort(sort)" 
+            class="container-list__item">
             {{ sort }}
           </p>
         </v-list-item>

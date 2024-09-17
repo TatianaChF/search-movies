@@ -1,6 +1,8 @@
 <template>
   <v-container class="sort">
-    <v-container class="sort__filter" width="800">
+    <v-container 
+      class="sort__filter" 
+      width="800">
       <v-container>
         <v-btn
           @click="isFilterOpen = !isFilterOpen"
@@ -14,9 +16,13 @@
       </v-container>
       <sorting-component class="sort__component" />
     </v-container>
-    <v-btn icon="mdi-delete" @click="bookmarksStore.clearBookmarks()"></v-btn>
+    <v-btn 
+      icon="mdi-delete" 
+      @click="bookmarksStore.clearBookmarks()" />
   </v-container>
-  <v-container class="container" v-if="bookmarksStore.bookmarks.length > 0">
+  <v-container 
+    class="container" 
+    v-if="bookmarksStore.bookmarks.length > 0">
     <v-container
       class="container__card"
       v-for="movie in bookmarksStore.filteredBookmarks"
@@ -25,7 +31,9 @@
       <movie-card :movieData="movie" />
     </v-container>
   </v-container>
-  <h2 class="text" v-else>У Вас нет фильмов в закладках</h2>
+  <h2 class="text" v-else>
+    У Вас нет фильмов в закладках
+  </h2>
 </template>
 
 <script setup>
